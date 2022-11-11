@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
 
-    @yield('styles')
+    @stack('styles')
 </head>
 
 <body class="bg-dark text-white">
@@ -33,14 +33,18 @@
                         </a>
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ route('main') }}">Главная</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Disabled</a>
-                            </li>
+                            @php
+                                $categories = \App\Models\ContentCategory::all();
+                            @endphp
+                            @foreach ($categories as $item)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('category', [
+                                        'category' => $item->slug ?? $item->id
+                                    ]) }}">{{$item->name}}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -61,7 +65,7 @@
 
     </main>
 
-    @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>
