@@ -11,12 +11,16 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+
 class ContentPage extends Model implements HasMedia
 {
     use SoftDeletes;
     use InteractsWithMedia;
     use Auditable;
     use HasFactory;
+    use Translatable;
 
     public $table = 'content_pages';
 
@@ -33,18 +37,21 @@ class ContentPage extends Model implements HasMedia
 
     protected $fillable = [
         'visible',
-        'title',
-        'excerpt',
-        'page_text',
+        // 'title',
+        // 'excerpt',
+        // 'page_text',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    public $translatedAttributes = ['title', 'excerpt', 'page_text'];
+
+
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')->fit('crop', 50, 50);
-        $this->addMediaConversion('preview')->fit('crop', 120, 120);
+        $this->addMediaConversion('thumb')->fit('crop', 100, 100);
+        $this->addMediaConversion('preview')->fit('crop', 400, 400);
     }
 
     public function categories()
@@ -84,5 +91,10 @@ class ContentPage extends Model implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function scopeVisible($query)
+    {
+        return $query->where('visible', 1);
     }
 }

@@ -32,12 +32,6 @@
                         {{ trans('cruds.contentPage.fields.visible') }}
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.title') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.contentPage.fields.excerpt') }}
-                    </th>
-                    <th>
                         {{ trans('cruds.contentPage.fields.category') }}
                     </th>
                     <th>
@@ -104,8 +98,6 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'visible', name: 'visible' },
-{ data: 'title', name: 'title' },
-{ data: 'excerpt', name: 'excerpt' },
 { data: 'category', name: 'categories.name' },
 { data: 'tag', name: 'tags.name' },
 { data: 'featured_image', name: 'featured_image', sortable: false, searchable: false },

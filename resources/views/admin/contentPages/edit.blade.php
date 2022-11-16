@@ -7,6 +7,14 @@
     </div>
 
     <div class="card-body">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#ua-form">UA</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#en-form">EN</a>
+            </li>
+        </ul>
         <form method="POST" action="{{ route("admin.content-pages.update", [$contentPage->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -23,36 +31,78 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.visible_helper') }}</span>
             </div>
-            <div class="form-group">
-                <label class="required" for="title">{{ trans('cruds.contentPage.fields.title') }}</label>
-                <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $contentPage->title) }}" required>
-                @if($errors->has('title'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('title') }}
+
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="ua-form">
+                    <div class="form-group">
+                        <label class="required" for="ua_title">{{ trans('cruds.contentPage.fields.title') }} (UA)</label>
+                        <input class="form-control {{ $errors->has('ua_title') ? 'is-invalid' : '' }}" type="text" name="ua_title" id="ua_title" value="{{ old('title', $contentPage->translate('ua')->title) }}" required>
+                        @if($errors->has('ua_title'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('ua_title') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="excerpt">{{ trans('cruds.contentPage.fields.excerpt') }}</label>
-                <textarea class="form-control {{ $errors->has('excerpt') ? 'is-invalid' : '' }}" name="excerpt" id="excerpt">{{ old('excerpt', $contentPage->excerpt) }}</textarea>
-                @if($errors->has('excerpt'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('excerpt') }}
+                    <div class="form-group">
+                        <label for="ua_excerpt">{{ trans('cruds.contentPage.fields.excerpt') }} (UA)</label>
+                        <textarea class="form-control {{ $errors->has('ua_excerpt') ? 'is-invalid' : '' }}" name="ua_excerpt" id="ua_excerpt">{{ old('ua_excerpt', $contentPage->translate('ua')->excerpt) }}</textarea>
+                        @if($errors->has('ua_excerpt'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('ua_excerpt') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }}</label>
-                <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="page_text" id="page_text">{!! old('page_text', $contentPage->page_text) !!}</textarea>
-                @if($errors->has('page_text'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('page_text') }}
+                    <div class="form-group">
+                        <label for="page_text">{{ trans('cruds.contentPage.fields.page_text') }} (UA)</label>
+                        <textarea class="form-control ckeditor {{ $errors->has('ua_page_text') ? 'is-invalid' : '' }}" name="ua_page_text" id="ua_page_text">{!! old('ua_page_text', $contentPage->translate('ua')->page_text) !!}</textarea>
+                        @if($errors->has('ua_page_text'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('ua_page_text') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
+                </div>
+
+                <div class="tab-pane" id="en-form">
+                    <div class="form-group">
+                        <label class="required" for="en_title">{{ trans('cruds.contentPage.fields.title') }} (EN)</label>
+                        <input class="form-control {{ $errors->has('en_title') ? 'is-invalid' : '' }}" type="text" name="en_title" id="en_title" value="{{ old('en_title', $contentPage->translate('en')->title) }}" required>
+                        @if($errors->has('en_title'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('en_title') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.contentPage.fields.title_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="en_excerpt">{{ trans('cruds.contentPage.fields.excerpt') }} (EN)</label>
+                        <textarea class="form-control {{ $errors->has('en_excerpt') ? 'is-invalid' : '' }}" name="en_excerpt" id="en_excerpt">{{ old('en_excerpt', $contentPage->translate('en')->excerpt) }}</textarea>
+                        @if($errors->has('en_excerpt'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('en_excerpt') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.contentPage.fields.excerpt_helper') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="en_page_text">{{ trans('cruds.contentPage.fields.page_text') }} (EN)</label>
+                        <textarea class="form-control ckeditor {{ $errors->has('page_text') ? 'is-invalid' : '' }}" name="en_page_text" id="en_page_text">{!! old('en_page_text', $contentPage->translate('en')->page_text) !!}</textarea>
+                        @if($errors->has('en_page_text'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('en_page_text') }}
+                            </div>
+                        @endif
+                        <span class="help-block">{{ trans('cruds.contentPage.fields.page_text_helper') }}</span>
+                    </div>
+                </div>
+
             </div>
+
+
             <div class="form-group">
                 <label for="categories">{{ trans('cruds.contentPage.fields.category') }}</label>
                 <div style="padding-bottom: 4px">

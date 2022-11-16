@@ -54,12 +54,6 @@ class ContentPageController extends Controller
             $table->editColumn('visible', function ($row) {
                 return '<input type="checkbox" disabled ' . ($row->visible ? 'checked' : null) . '>';
             });
-            $table->editColumn('title', function ($row) {
-                return $row->title ? $row->title : '';
-            });
-            $table->editColumn('excerpt', function ($row) {
-                return $row->excerpt ? $row->excerpt : '';
-            });
             $table->editColumn('category', function ($row) {
                 $labels = [];
                 foreach ($row->categories as $category) {
@@ -109,7 +103,19 @@ class ContentPageController extends Controller
 
     public function store(StoreContentPageRequest $request)
     {
-        $contentPage = ContentPage::create($request->all());
+        $article_data = [
+            'ua' => [
+                'title' => $request->input('ua_title'),
+                'excerpt' => $request->input('ua_excerpt'),
+                'page_text' => $request->input('ua_page_text'),
+            ],
+            'en' => [
+                'title' => $request->input('en_title'),
+                'excerpt' => $request->input('en_excerpt'),
+                'page_text' => $request->input('en_page_text'),
+            ],
+        ];
+        $contentPage = ContentPage::create(array_merge($request->all(), $article_data));
         $contentPage->categories()->sync($request->input('categories', []));
         $contentPage->tags()->sync($request->input('tags', []));
         if ($request->input('featured_image', false)) {
@@ -142,7 +148,19 @@ class ContentPageController extends Controller
 
     public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
     {
-        $contentPage->update($request->all());
+        $article_data = [
+            'ua' => [
+                'title' => $request->input('ua_title'),
+                'excerpt' => $request->input('ua_excerpt'),
+                'page_text' => $request->input('ua_page_text'),
+            ],
+            'en' => [
+                'title' => $request->input('en_title'),
+                'excerpt' => $request->input('en_excerpt'),
+                'page_text' => $request->input('en_page_text'),
+            ],
+        ];
+        $contentPage->update(array_merge($request->all(), $article_data));
         $contentPage->categories()->sync($request->input('categories', []));
         $contentPage->tags()->sync($request->input('tags', []));
         if ($request->input('featured_image', false)) {

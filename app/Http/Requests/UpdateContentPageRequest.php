@@ -17,10 +17,6 @@ class UpdateContentPageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
-                'string',
-                'required',
-            ],
             'categories.*' => [
                 'integer',
             ],
@@ -34,6 +30,12 @@ class UpdateContentPageRequest extends FormRequest
                 'array',
             ],
             'images' => [
+                'array',
+            ],
+            'ua' => [
+                'array',
+            ],
+            'en' => [
                 'array',
             ],
         ];

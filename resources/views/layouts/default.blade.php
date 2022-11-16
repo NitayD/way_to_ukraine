@@ -22,43 +22,49 @@
 
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
-                <div class="container">
+                <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                         <a class="navbar-brand d-inline-flex align-items-center" href="{{ route('main') }}">
-                            <img src="{{ asset('images/logo.svg') }}" width="70" height="60" class="d-inline-block align-top" alt="">
+                            <img src="{{ asset('images/logo.svg') }}" width="140" height="120" class="d-inline-block align-top" alt="">
                             Way to Ukraine
                         </a>
-                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('main') }}">Главная</a>
-                            </li>
+                        <ul class="navbar-nav mr-auto mt-2">
                             @php
                                 $categories = \App\Models\ContentCategory::all();
                             @endphp
                             @foreach ($categories as $item)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('category', [
-                                        'category' => $item->slug ?? $item->id
+                                        'category' => $item->url
                                     ]) }}">{{$item->name}}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
+                    <button class="btn btn-light">DONATE</button>
+                    <nav class="nav">
+                        <a class="nav-link {{ app()->isLocale('ua') ? 'disabled' : 'text-white' }}" href="{{ url()->current() }}?change_language=ua">
+                            <u>UA</u>
+                        </a>
+                        <a class="nav-link {{ app()->isLocale('en') ? 'disabled' : 'text-white' }}" href="{{ url()->current() }}?change_language=en">
+                            <u>EN</u>
+                        </a>
+                    </nav>
                 </div>
             </nav>
         </header>
 
-        <article class="container">
-            <div class="container">
+        <article>
+            <div class="container-fluid">
                 @yield("content")
             </div>
         </article>
 
         <footer>
-            <div class="container">
+            <div class="container-fluid">
 
             </div>
         </footer>

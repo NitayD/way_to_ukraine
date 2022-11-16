@@ -1,10 +1,10 @@
 <?php
 
 // Route::redirect('/', '/login');
-Route::view('/', 'welcome')->name('main');
+Route::get('/', 'PagesController@main')->name('main');
 
-Route::get('/content/{category}', 'PagesController@category')->name('category');
-Route::get('/content/{category}/{page}', 'PagesController@page')->name('page');
+Route::get('/p/{category}', 'PagesController@category')->name('category');
+Route::get('/p/{category}/{page}', 'PagesController@page')->name('page');
 
 Route::get('/home', function () {
     if (session('status')) {
