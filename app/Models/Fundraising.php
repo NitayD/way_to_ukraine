@@ -75,4 +75,21 @@ class Fundraising extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function scopeMain($query)
+    {
+        return $query
+            ->where('finished', false)
+            ->orderby('sort', 'desc')
+            ->limit(3)
+            ->withSum('funraisingPurchasingLists', 'total_sum');
+    }
+
+    public function getProgressAttribute()
+    {
+        $info = round($this->already_collected/$this->funraising_purchasing_lists_sum_total_sum*100)/100;
+        if ($info > 100) $info = 100;
+        if ($info < 0) $info = 0;
+        return $info;
+    }
 }

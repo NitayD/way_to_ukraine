@@ -1,0 +1,57 @@
+.first
+    background:
+        image: url('/images/main_bg4.jpg')
+        size: cover
+        position: center 75%
+        repeat: no-repeat
+    height: calc(100vh - 260px)
+    position: relative
+    &::after
+        content: ''
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 100%
+        height: 100%
+        transform: translate(-50%, -50%)
+        background: linear-gradient(to top, rgba($primary, .35) 5%, rgba($primary, .15))
+    // &::before
+    //     width: 800px
+    //     height: 480px
+    //     background-color: rgba(black, .5)
+
+    >*
+        position: relative
+        z-index: 3
+    &--header
+        font-size: 72px
+        font-weight: 900
+    &--subheader
+        font-size: 46px
+        font-weight: 700
+    &--hello
+        max-width: 800px
+        max-height: 480px
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+        padding: 20px
+        text-shadow: 5px 5px 5px black
+
+
+.second
+
+
+article
+    padding-top: 50px
+    padding-bottom: 50px
+    background-color: darken($primary, 10%)
+    h2
+        text-align: center
+        color: white
+        font-weight: 900
+    &:nth-child(odd)
+        background-color: $main
+        h2
+            color: black
