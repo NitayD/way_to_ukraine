@@ -17,6 +17,10 @@ class StoreContentPageRequest extends FormRequest
     public function rules()
     {
         return [
+            'title' => [
+                'string',
+                'required',
+            ],
             'categories.*' => [
                 'integer',
             ],
@@ -30,12 +34,6 @@ class StoreContentPageRequest extends FormRequest
                 'array',
             ],
             'images' => [
-                'array',
-            ],
-            'ua' => [
-                'array',
-            ],
-            'en' => [
                 'array',
             ],
         ];

@@ -236,6 +236,70 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 57,
+                'title' => 'aid_access',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'fundraising_create',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'fundraising_edit',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'fundraising_show',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'fundraising_delete',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'fundraising_access',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'collectible_create',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'collectible_edit',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'collectible_show',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'collectible_delete',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'collectible_access',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'purchasing_list_create',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'purchasing_list_edit',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'purchasing_list_show',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'purchasing_list_delete',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'purchasing_list_access',
+            ],
+            [
+                'id'    => 73,
                 'title' => 'profile_password_edit',
             ],
         ];

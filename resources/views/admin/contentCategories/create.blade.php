@@ -10,30 +10,6 @@
         <form method="POST" action="{{ route("admin.content-categories.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <div class="form-check {{ $errors->has('show_main_page') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="show_main_page" value="0">
-                    <input class="form-check-input" type="checkbox" name="show_main_page" id="show_main_page" value="1" {{ old('show_main_page', 0) == 1 || old('show_main_page') === null ? 'checked' : '' }}>
-                    <label class="form-check-label" for="show_main_page">{{ trans('cruds.contentCategory.fields.show_main') }}</label>
-                </div>
-                @if($errors->has('show_main_page'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('show_main_page') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentCategory.fields.show_main_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="sort">{{ trans('cruds.contentCategory.fields.sort') }}</label>
-                <input class="form-control {{ $errors->has('sort') ? 'is-invalid' : '' }}" type="number" name="sort" id="sort" value="{{ old('sort', '100') }}" step="1" required>
-                @if($errors->has('sort'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('sort') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentCategory.fields.sort_helper') }}</span>
-            </div>
-
-            <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.contentCategory.fields.name') }}</label>
                 <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', '') }}" required>
                 @if($errors->has('name'))

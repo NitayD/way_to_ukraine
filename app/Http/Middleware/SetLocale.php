@@ -11,7 +11,6 @@ class SetLocale
         if (request('change_language')) {
             session()->put('language', request('change_language'));
             $language = request('change_language');
-            return redirect()->to(url()->current());
         } elseif (session('language')) {
             $language = session('language');
         } elseif (config('panel.primary_language')) {
