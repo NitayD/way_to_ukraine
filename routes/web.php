@@ -1,11 +1,6 @@
 <?php
 
-// Route::redirect('/', '/login');
-Route::get('/', 'PagesController@main')->name('main');
-
-Route::get('/p/{category}', 'PagesController@category')->name('category');
-Route::get('/p/{category}/{page}', 'PagesController@page')->name('page');
-
+Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -67,15 +62,27 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Requisite Group
     Route::delete('requisite-groups/destroy', 'RequisiteGroupController@massDestroy')->name('requisite-groups.massDestroy');
-    Route::post('requisite-groups/parse-csv-import', 'RequisiteGroupController@parseCsvImport')->name('requisite-groups.parseCsvImport');
-    Route::post('requisite-groups/process-csv-import', 'RequisiteGroupController@processCsvImport')->name('requisite-groups.processCsvImport');
     Route::resource('requisite-groups', 'RequisiteGroupController');
 
     // Requisite
     Route::delete('requisites/destroy', 'RequisiteController@massDestroy')->name('requisites.massDestroy');
-    Route::post('requisites/parse-csv-import', 'RequisiteController@parseCsvImport')->name('requisites.parseCsvImport');
-    Route::post('requisites/process-csv-import', 'RequisiteController@processCsvImport')->name('requisites.processCsvImport');
     Route::resource('requisites', 'RequisiteController');
+
+    // Fundraising
+    Route::delete('fundraisings/destroy', 'FundraisingController@massDestroy')->name('fundraisings.massDestroy');
+    Route::post('fundraisings/media', 'FundraisingController@storeMedia')->name('fundraisings.storeMedia');
+    Route::post('fundraisings/ckmedia', 'FundraisingController@storeCKEditorImages')->name('fundraisings.storeCKEditorImages');
+    Route::resource('fundraisings', 'FundraisingController');
+
+    // Collectible
+    Route::delete('collectibles/destroy', 'CollectibleController@massDestroy')->name('collectibles.massDestroy');
+    Route::post('collectibles/media', 'CollectibleController@storeMedia')->name('collectibles.storeMedia');
+    Route::post('collectibles/ckmedia', 'CollectibleController@storeCKEditorImages')->name('collectibles.storeCKEditorImages');
+    Route::resource('collectibles', 'CollectibleController');
+
+    // Purchasing List
+    Route::delete('purchasing-lists/destroy', 'PurchasingListController@massDestroy')->name('purchasing-lists.massDestroy');
+    Route::resource('purchasing-lists', 'PurchasingListController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

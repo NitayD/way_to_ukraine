@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyRequisiteRequest;
 use App\Http\Requests\StoreRequisiteRequest;
 use App\Http\Requests\UpdateRequisiteRequest;
@@ -12,60 +11,16 @@ use App\Models\RequisiteGroup;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Yajra\DataTables\Facades\DataTables;
 
 class RequisiteController extends Controller
 {
-    use CsvImportTrait;
-
-    public function index(Request $request)
+    public function index()
     {
         abort_if(Gate::denies('requisite_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if ($request->ajax()) {
-            $query = Requisite::with(['group'])->select(sprintf('%s.*', (new Requisite())->table));
-            $table = Datatables::of($query);
+        $requisites = Requisite::with(['group'])->get();
 
-            $table->addColumn('placeholder', '&nbsp;');
-            $table->addColumn('actions', '&nbsp;');
-
-            $table->editColumn('actions', function ($row) {
-                $viewGate = 'requisite_show';
-                $editGate = 'requisite_edit';
-                $deleteGate = 'requisite_delete';
-                $crudRoutePart = 'requisites';
-
-                return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
-            });
-
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
-            $table->editColumn('label', function ($row) {
-                return $row->label ? $row->label : '';
-            });
-            $table->editColumn('value', function ($row) {
-                return $row->value ? $row->value : '';
-            });
-            $table->editColumn('priority', function ($row) {
-                return $row->priority ? $row->priority : '';
-            });
-            $table->addColumn('group_name', function ($row) {
-                return $row->group ? $row->group->name : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'group']);
-
-            return $table->make(true);
-        }
-
-        return view('admin.requisites.index');
+        return view('admin.requisites.index', compact('requisites'));
     }
 
     public function create()

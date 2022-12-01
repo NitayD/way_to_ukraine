@@ -11,51 +11,18 @@ use App\Models\FaqCategory;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Yajra\DataTables\Facades\DataTables;
 
 class FaqCategoryController extends Controller
 {
     use CsvImportTrait;
 
-    public function index(Request $request)
+    public function index()
     {
         abort_if(Gate::denies('faq_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        if ($request->ajax()) {
-            $query = FaqCategory::query()->select(sprintf('%s.*', (new FaqCategory())->table));
-            $table = Datatables::of($query);
+        $faqCategories = FaqCategory::all();
 
-            $table->addColumn('placeholder', '&nbsp;');
-            $table->addColumn('actions', '&nbsp;');
-
-            $table->editColumn('actions', function ($row) {
-                $viewGate = 'faq_category_show';
-                $editGate = 'faq_category_edit';
-                $deleteGate = 'faq_category_delete';
-                $crudRoutePart = 'faq-categories';
-
-                return view('partials.datatablesActions', compact(
-                'viewGate',
-                'editGate',
-                'deleteGate',
-                'crudRoutePart',
-                'row'
-            ));
-            });
-
-            $table->editColumn('id', function ($row) {
-                return $row->id ? $row->id : '';
-            });
-            $table->editColumn('category', function ($row) {
-                return $row->category ? $row->category : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder']);
-
-            return $table->make(true);
-        }
-
-        return view('admin.faqCategories.index');
+        return view('admin.faqCategories.index', compact('faqCategories'));
     }
 
     public function create()

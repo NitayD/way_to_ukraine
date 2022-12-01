@@ -67,6 +67,48 @@
                 </ul>
             </li>
         @endcan
+        @can('aid_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/fundraisings*") ? "c-show" : "" }} {{ request()->is("admin/collectibles*") ? "c-show" : "" }} {{ request()->is("admin/purchasing-lists*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.aid.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('fundraising_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.fundraisings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/fundraisings") || request()->is("admin/fundraisings/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.fundraising.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('collectible_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.collectibles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/collectibles") || request()->is("admin/collectibles/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.collectible.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('purchasing_list_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.purchasing-lists.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/purchasing-lists") || request()->is("admin/purchasing-lists/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.purchasingList.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @can('content_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
