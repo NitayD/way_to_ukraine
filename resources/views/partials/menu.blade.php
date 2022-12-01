@@ -109,6 +109,38 @@
                 </ul>
             </li>
         @endcan
+        @can('donation_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/requisite-groups*") ? "c-show" : "" }} {{ request()->is("admin/requisites*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-dollar-sign c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.donation.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('requisite_group_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.requisite-groups.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/requisite-groups") || request()->is("admin/requisite-groups/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-file-invoice-dollar c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.requisiteGroup.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('requisite_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.requisites.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/requisites") || request()->is("admin/requisites/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.requisite.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @can('content_management_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/content-categories*") ? "c-show" : "" }} {{ request()->is("admin/content-tags*") ? "c-show" : "" }} {{ request()->is("admin/content-pages*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -177,38 +209,6 @@
 
                                 </i>
                                 {{ trans('cruds.faqQuestion.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </li>
-        @endcan
-        @can('donation_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/requisite-groups*") ? "c-show" : "" }} {{ request()->is("admin/requisites*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-dollar-sign c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.donation.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('requisite_group_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.requisite-groups.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/requisite-groups") || request()->is("admin/requisite-groups/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file-invoice-dollar c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.requisiteGroup.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('requisite_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.requisites.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/requisites") || request()->is("admin/requisites/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.requisite.title') }}
                             </a>
                         </li>
                     @endcan
