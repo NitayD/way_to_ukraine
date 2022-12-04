@@ -1,0 +1,33 @@
+.fundlist, .fundlist__content
+    background-color: $primary
+    border-radius: 15px
+    overflow: hidden
+    color: white
+    box-shadow: 10px 10px 0 rgba(lighten($primary, 10%), .3)
+    &__content
+        padding: 15px
+        img
+            border-radius: 15px
+            margin-bottom: 15px
+            box-shadow: 10px 10px 0 rgba(lighten($main, 10%), .3)
+    table
+        padding: 15px
+        width: 100%
+        text-align: center
+        th, td
+            padding: 10px
+            img
+                max-width: 100%
+        th
+            width: 30%
+        td
+            width: 35%
+        tr
+            background-color: $primary
+            transition: all 0.3s ease-out
+            &:hover
+                background-color: lighten($primary, 10%)
+        .description, thead tr
+            background-color: lighten($primary, 10%)
+            .item-gallary
+                width: 240px

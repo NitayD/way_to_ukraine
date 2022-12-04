@@ -68,8 +68,7 @@
 
 		// move the bar
 		this.move = (percent) => {
-
-			$("."+this.classNameBar).css({
+			$("#"+this.wrapperId + " ."+this.classNameBar).css({
 				width: percent+"%",
 				transition : "width "+this.speedAnimation+"s"
 			});

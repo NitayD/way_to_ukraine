@@ -26,9 +26,11 @@
     &--header
         font-size: 72px
         font-weight: 900
+        color: $white
     &--subheader
         font-size: 46px
         font-weight: 700
+        color: $white
     &--hello
         max-width: 800px
         max-height: 480px
@@ -46,12 +48,29 @@
 article
     padding-top: 50px
     padding-bottom: 50px
-    background-color: darken($primary, 10%)
+    background-color: $darkPrimary
+    display: flex
+    flex-direction: column
+    align-items: center
     h2
         text-align: center
         color: white
+        display: inline-block
+        text-align: center
         font-weight: 900
+        border-bottom: 2px solid white
     &:nth-child(odd)
         background-color: $main
+        color: black
         h2
+            color: black
+            border-color: black
+        .fund
+            border: 7px solid $primary
+            background-color: $main
+        .more
+            background-color: $primary
+    &:nth-child(even)
+        .more
+            background-color: $main
             color: black

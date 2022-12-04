@@ -2,6 +2,17 @@ body {
   font-family: "Nunito", sans-serif;
   font-weight: 500;
   font-size: 18px;
+  background-color: #002c5e;
+  color: #fefefe;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
 }
 
 .fund {
@@ -9,8 +20,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 30px;
-  background-color: #006feb;
+  background-color: #0050ab;
   position: relative;
+  border-radius: 15px;
+  box-shadow: 10px 10px 0 rgba(0, 92, 196, 0.3);
 }
 .fund-card {
   min-height: 320px;
@@ -26,6 +39,7 @@ body {
 }
 .fund--title {
   font-size: 26px;
+  font-weight: 700;
 }
 .fund--progress {
   width: 100%;
@@ -37,7 +51,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  white-space: nowrap;
   font-size: 20px;
+  padding: 15px;
+  background-color: #004491;
+  color: white;
+  border-radius: 15px;
 }
 .fund--progress_ints span {
   padding-left: 5px;
@@ -47,26 +67,29 @@ body {
   font-weight: 700;
 }
 .fund-main {
-  background-color: gold;
+  background-color: #FFD53C;
   color: black;
+  box-shadow: 10px 10px 0 rgba(255, 224, 111, 0.3);
 }
 .fund-main::after {
   content: none;
 }
 
 .bttn {
-  padding: 5px 10px;
+  padding: 7.5px 15px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #067bff;
+  background-color: #004491;
   color: white;
   overflow: hidden;
   cursor: pointer;
   text-transform: uppercase;
   font-size: 16px;
   transition: all 0.3s ease-out;
+  border-radius: 5px;
+  box-shadow: 5px 5px 0 rgba(0, 68, 145, 0.3);
 }
 .bttn-double::after {
   content: "";
@@ -75,19 +98,20 @@ body {
   left: 0;
   top: 0;
   height: 100%;
-  background-color: #1f89ff;
+  background-color: #0074f7;
   transform: translateX(50%);
   transition: all 0.3s ease-out;
   z-index: 1;
 }
 .bttn:hover {
   color: #e6e6e6;
-  background-color: #006feb;
+  background-color: #005cc4;
   text-decoration: none;
+  box-shadow: -5px -5px 0 rgba(0, 92, 196, 0.3);
 }
 .bttn:hover::after {
   transform: translateX(0%);
-  background-color: #52a4ff;
+  background-color: #2b8eff;
 }
 .bttn > * {
   position: relative;
@@ -95,14 +119,19 @@ body {
   text-shadow: none;
 }
 .bttn-main {
-  background-color: gold;
+  background-color: #FFD53C;
   color: black;
+  font-weight: 600;
+  box-shadow: 5px 5px 0 rgba(255, 213, 60, 0.3);
 }
 .bttn-main::after {
-  background-color: #bd9f00;
+  background-color: #f9c300;
+}
+.bttn-main:hover {
+  box-shadow: -5px -5px 0 rgba(0, 68, 145, 0.3);
 }
 .bttn-main:hover::after {
-  background-color: #998100;
+  background-color: #d5a700;
 }
 .bttn-white {
   background-color: white;
@@ -124,7 +153,96 @@ header.header {
   left: 0;
   width: 100%;
   z-index: 10;
-  background-color: rgba(0, 87, 184, 0.4);
+  background-color: rgba(0, 68, 145, 0.4);
+  color: white;
+}
+
+footer.footer {
+  background-color: #003a7d;
+  border-top: 20px solid #FFD53C;
+  color: #fefefe;
+}
+footer.footer a {
+  color: inherit;
+}
+footer.footer h5.title {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: block;
+  text-align: center;
+  padding: 15px;
+  background-color: #FFD53C;
+  color: black;
+  border-radius: 15px;
+  font-weight: 700;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.social-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background-color: #0050ab;
+  transition: background 0.3s ease-out;
+}
+.social-link:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.social-link:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.social-link img {
+  width: 40px;
+  filter: invert(1);
+}
+.social-link:hover {
+  background-color: #0074f7;
+}
+
+.link-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #0050ab;
+  border-radius: 15px;
+}
+.link-list li {
+  padding: 5px 10px;
+  background-color: #0050ab;
+  transition: background 0.3s ease-out;
+}
+.link-list li:first-child {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.link-list li:last-child {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.link-list li:hover {
+  background-color: #0074f7;
+}
+.link-list a {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+.link-list a:hover {
+  text-decoration: none;
+}
+
+.mail img {
+  width: 32px;
+  margin-right: 15px;
+  filter: invert(1);
 }
 
 .first {
@@ -143,7 +261,7 @@ header.header {
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(to top, rgba(0, 87, 184, 0.35) 5%, rgba(0, 87, 184, 0.15));
+  background: linear-gradient(to top, rgba(0, 68, 145, 0.35) 5%, rgba(0, 68, 145, 0.15));
 }
 .first > * {
   position: relative;
@@ -152,10 +270,12 @@ header.header {
 .first--header {
   font-size: 72px;
   font-weight: 900;
+  color: #fefefe;
 }
 .first--subheader {
   font-size: 46px;
   font-weight: 700;
+  color: #fefefe;
 }
 .first--hello {
   max-width: 800px;
@@ -171,16 +291,135 @@ header.header {
 article {
   padding-top: 50px;
   padding-bottom: 50px;
-  background-color: #003f85;
+  background-color: #003a7d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 article h2 {
   text-align: center;
   color: white;
+  display: inline-block;
+  text-align: center;
   font-weight: 900;
+  border-bottom: 2px solid white;
 }
 article:nth-child(odd) {
-  background-color: gold;
+  background-color: #FFD53C;
+  color: black;
 }
 article:nth-child(odd) h2 {
   color: black;
+  border-color: black;
+}
+article:nth-child(odd) .fund {
+  border: 7px solid #004491;
+  background-color: #FFD53C;
+}
+article:nth-child(odd) .more {
+  background-color: #004491;
+}
+article:nth-child(even) .more {
+  background-color: #FFD53C;
+  color: black;
+}
+
+.list-item {
+  padding: 30px;
+  background-color: #002c5e;
+  border-radius: 15px;
+}
+.list-item__title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.list-item__preview img {
+  border-radius: 10px;
+}
+.list-item__date {
+  font-size: 14px;
+  font-weight: 300;
+  margin-left: 15px;
+}
+.list-item__progress {
+  background-color: #FFF4C0;
+  border-radius: 100px;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+.list-item__progress div {
+  display: inline-block;
+  background: #0050ab;
+  height: 20px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.slider {
+  background-color: #0050ab;
+  border-radius: 15px;
+  box-shadow: 10px 10px 0 rgba(0, 92, 196, 0.3);
+  padding: 15px;
+}
+.slider img {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slick-dots {
+  bottom: -40px !important;
+  left: 0;
+}
+.slick-dots li button:before {
+  font-size: 16px !important;
+}
+
+.fundlist, .fundlist__content {
+  background-color: #004491;
+  border-radius: 15px;
+  overflow: hidden;
+  color: white;
+  box-shadow: 10px 10px 0 rgba(0, 92, 196, 0.3);
+}
+.fundlist__content, .fundlist__content__content {
+  padding: 15px;
+}
+.fundlist__content img, .fundlist__content__content img {
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 10px 10px 0 rgba(255, 224, 111, 0.3);
+}
+.fundlist table, .fundlist__content table {
+  padding: 15px;
+  width: 100%;
+  text-align: center;
+}
+.fundlist table th, .fundlist table td, .fundlist__content table th, .fundlist__content table td {
+  padding: 10px;
+}
+.fundlist table th img, .fundlist table td img, .fundlist__content table th img, .fundlist__content table td img {
+  max-width: 100%;
+}
+.fundlist table th, .fundlist__content table th {
+  width: 30%;
+}
+.fundlist table td, .fundlist__content table td {
+  width: 35%;
+}
+.fundlist table tr, .fundlist__content table tr {
+  background-color: #004491;
+  transition: all 0.3s ease-out;
+}
+.fundlist table tr:hover, .fundlist__content table tr:hover {
+  background-color: #005cc4;
+}
+.fundlist table .description, .fundlist table thead tr, .fundlist__content table .description, .fundlist__content table thead tr {
+  background-color: #005cc4;
+}
+.fundlist table .description .item-gallary, .fundlist table thead tr .item-gallary, .fundlist__content table .description .item-gallary, .fundlist__content table thead tr .item-gallary {
+  width: 240px;
 }
