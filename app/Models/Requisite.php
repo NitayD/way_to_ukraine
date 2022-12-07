@@ -41,4 +41,9 @@ class Requisite extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function scopeNogroup($query)
+    {
+        return $query->whereNull('group_id');
+    }
 }

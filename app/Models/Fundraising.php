@@ -98,6 +98,9 @@ class Fundraising extends Model implements HasMedia
 
     public function getProgressAttribute()
     {
+        if (!$this->funraising_purchasing_lists_sum_total_sum) {
+            $this->funraising_purchasing_lists_sum_total_sum = $this->funraisingPurchasingLists()->sum('total_sum');
+        }
         $info = round($this->already_collected/$this->funraising_purchasing_lists_sum_total_sum*100);
         if ($info > 100) $info = 100;
         if ($info < 0) $info = 0;

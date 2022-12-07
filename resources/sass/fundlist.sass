@@ -4,6 +4,28 @@
     overflow: hidden
     color: white
     box-shadow: 10px 10px 0 rgba(lighten($primary, 10%), .3)
+.fundlist
+    &__progress
+        display: flex
+        align-items: center
+        div
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            position: relative
+            background-color: #fff
+            height: 10px
+            span
+                transform: translateX(-50%)
+                position: absolute
+                left: 100%
+                bottom: calc(100% + 5px)
+                background-color: #fff
+                display: flex
+                align-items: center
+                justify-content: center
+                padding: 10px
+                color: black
     &__content
         padding: 15px
         img

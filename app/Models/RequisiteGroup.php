@@ -39,4 +39,9 @@ class RequisiteGroup extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function scopeWReqs($query)
+    {
+        return $query->has('groupRequisites')->orderby('priority', 'desc');
+    }
 }

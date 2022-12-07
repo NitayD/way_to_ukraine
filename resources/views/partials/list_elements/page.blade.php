@@ -1,9 +1,9 @@
 <div class="list-item">
     <div class="row">
-        @if ($item->getMedia('gallary')->count() > 0)
+        @if ($item->featuredImage)
             <div class="col-auto">
                 <div class="list-item__preview">
-                    <img src="{{ $item->gallary[0]->preview }}" alt="">
+                    <img src="{{ $item->featuredImage->preview }}" alt="">
                 </div>
                 <div class="d-flex flex-column">
                 </div>
@@ -19,16 +19,8 @@
                 </div>
             </div>
             <div class="list-item__description">
-                {{ $item->description_short }}
+                {{ $item->excerpt }}
             </div>
-            <a href="{{ route('fundraising', [
-                'fundraising' => $item->id
-            ]) }}" class="list-item__link">Подробнее</a>
         </div>
     </div>
-    @if (!empty($item->funraising_purchasing_lists_sum_total_sum))
-        <div class="list-item__progress mt-4">
-            <div style="width: {{$item->progress}}%;">{{$item->progress}}%</div>
-        </div>
-    @endif
 </div>

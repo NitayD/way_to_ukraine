@@ -1,11 +1,12 @@
 .first
     background:
-        image: url('/images/main_bg4.jpg')
-        size: cover
-        position: center 75%
-        repeat: no-repeat
+        image: url('/images/main_bg4.jpg') !important
+        size: cover !important
+        position: center 75% !important
+        repeat: no-repeat !important
     height: calc(100vh - 260px)
     position: relative
+    margin-top: -86px
     &::after
         content: ''
         position: absolute
@@ -28,6 +29,7 @@
         font-weight: 900
         color: $white
     &--subheader
+        text-align: center
         font-size: 46px
         font-weight: 700
         color: $white
@@ -60,7 +62,7 @@ article
         font-weight: 900
         border-bottom: 2px solid white
     &:nth-child(odd)
-        background-color: $main
+        background: linear-gradient(to top, $main 0%, darken($main, 10%) 100%)
         color: black
         h2
             color: black

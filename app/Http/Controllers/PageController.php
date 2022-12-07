@@ -16,7 +16,7 @@ class PageController extends Controller
     {
         $funds = Fundraising::main()->get();
         $blocks = ContentCategory::all();
-        $reqs = RequisiteGroup::all();
+        $reqs = RequisiteGroup::wReqs()->get();
         return view('welcome', [
             'funds' => $funds,
             'blocks' => $blocks,
@@ -26,8 +26,10 @@ class PageController extends Controller
 
     public function category(ContentCategory $category)
     {
-        return view('category', [
-            'category' => $category,
+        return view('list', [
+            'title' => $category->name,
+            'list' => $category->pages()->where('visible', true)->get(),
+            'itemType' => 'page',
         ]);
     }
 
@@ -43,10 +45,16 @@ class PageController extends Controller
         return view('about');
     }
 
+    public function team()
+    {
+        return view('team');
+    }
+
     public function requisites()
     {
         return view('requisites', [
-            Requisite::all()
+            'reqs' => RequisiteGroup::wReqs()->get(),
+            'nogroup' => Requisite::nogroup()->get()
         ]);
     }
 

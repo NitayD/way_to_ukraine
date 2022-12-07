@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ trans('panel.site_title') }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> --}}
     <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
@@ -34,26 +34,32 @@
                     <div class="collapse navbar-collapse align-items-center" id="navbarTogglerDemo01">
                         <a class="navbar-brand d-inline-flex align-items-center" href="{{ route('main') }}">
                             <img src="{{ asset('images/logo.svg') }}" width="100" height="60" class="d-inline-block align-top" alt="">
-                            Way to Ukraine
+                            <b>@lang('welcome.header')</b>
                         </a>
                         <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('about') }}">@lang('welcome.about')</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('team') }}">@lang('welcome.team')</a>
+                            </li>
                             @php
                                 $categories = \App\Models\ContentCategory::all();
                             @endphp
                             @foreach ($categories as $item)
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">{{$item->name}}</a>
+                                    <a class="nav-link" href="{{ route('category', [
+                                        'category' => $item->id
+                                    ]) }}">{{$item->name}}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="mx-3">
-                        Всего пожертвовано: <b>€ @convert(\App\Models\Fundraising::sum('already_collected'))</b>
+                        @lang('welcome.total_donation')<b>€ @convert(\App\Models\Fundraising::sum('already_collected'))</b>
                     </div>
                     <a href="{{ route('fundraisers') }}" class="bttn bttn-main">
-                        <span>
-                            Задонатить
-                        </span>
+                        <span>@lang('welcome.donate')</span>
                     </a>
                     {{-- <nav class="nav">
                         <a class="nav-link {{ app()->isLocale('ua') ? 'disabled' : 'text-white' }}" href="{{ url()->current() }}?change_language=ua">
@@ -81,13 +87,13 @@
                                 <a href="{{ route('about') }}">О нас</a>
                             </li>
                             <li>
-                                <a href="{{ route('about') }}">Команда</a>
+                                <a href="{{ route('team') }}">Команда</a>
                             </li>
                             <li>
-                                <a href="{{ route('about') }}">Сборы</a>
+                                <a href="{{ route('fundraisers') }}">Сборы</a>
                             </li>
                             <li>
-                                <a href="{{ route('about') }}">Реквизиты</a>
+                                <a href="{{ route('requisites') }}">Реквизиты</a>
                             </li>
                             @php
                                 $cats = \App\Models\ContentCategory::all();
@@ -143,6 +149,22 @@
     </main>
 
     @stack('scripts')
+    <script src="{{ asset('/js/notify.min.js') }}"></script>
+    <script>
+        $(function () {
+            function copyToClipboard(element) {
+                var $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val($(element).text().trim()).select();
+                document.execCommand("copy");
+                $temp.remove();
+                $.notify("@lang('welcome.copied')", "success");
+            }
+            $('.copy').on('click', function (e) {
+                copyToClipboard(e.target)
+            })
+        })
+    </script>
 </body>
 
 </html>

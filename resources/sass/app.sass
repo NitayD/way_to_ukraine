@@ -3,6 +3,8 @@ $main: #FFD53C
 $white: #fefefe
 $lightWhite: #FFF4C0
 $main2: black
+// $enable-cssgrid: true
+@import 'bootstrap'
 
 $darkPrimary: darken($primary, 4%)
 body
@@ -18,6 +20,12 @@ a
     &:hover
         text-decoration: none
         color: inherit
+
+.copy
+    text-decoration: underline
+    cursor: pointer
+    &:hover
+        text-decoration: none
 
 @import 'fund'
 @import 'bttn'
