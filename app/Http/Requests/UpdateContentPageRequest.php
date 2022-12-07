@@ -27,12 +27,6 @@ class UpdateContentPageRequest extends FormRequest
             'categories' => [
                 'array',
             ],
-            'tags.*' => [
-                'integer',
-            ],
-            'tags' => [
-                'array',
-            ],
             'images' => [
                 'array',
             ],

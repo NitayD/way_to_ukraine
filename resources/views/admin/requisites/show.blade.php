@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.requisite.fields.title') }}
+                        </th>
+                        <td>
+                            {{ $requisite->title }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.requisite.fields.label') }}
                         </th>
                         <td>
@@ -37,6 +45,14 @@
                         </th>
                         <td>
                             {{ $requisite->value }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.requisite.fields.is_link') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $requisite->is_link ? 'checked' : '' }}>
                         </td>
                     </tr>
                     <tr>

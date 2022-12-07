@@ -32,6 +32,10 @@ class UpdateFundraisingRequest extends FormRequest
                 'max:500',
                 'nullable',
             ],
+            'donation_link' => [
+                'string',
+                'required',
+            ],
             'files' => [
                 'array',
             ],

@@ -37,6 +37,9 @@
                         {{ trans('cruds.fundraising.fields.description_short') }}
                     </th>
                     <th>
+                        {{ trans('cruds.fundraising.fields.donation_link') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.fundraising.fields.files') }}
                     </th>
                     <th>
@@ -103,6 +106,7 @@
 { data: 'already_collected', name: 'already_collected' },
 { data: 'title', name: 'title' },
 { data: 'description_short', name: 'description_short' },
+{ data: 'donation_link', name: 'donation_link' },
 { data: 'files', name: 'files', sortable: false, searchable: false },
 { data: 'sort', name: 'sort' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }

@@ -70,7 +70,7 @@
         @can('aid_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/fundraisings*") ? "c-show" : "" }} {{ request()->is("admin/collectibles*") ? "c-show" : "" }} {{ request()->is("admin/purchasing-lists*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-allergies c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.aid.title') }}
@@ -79,7 +79,7 @@
                     @can('fundraising_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.fundraisings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/fundraisings") || request()->is("admin/fundraisings/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fab fa-cc-apple-pay c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.fundraising.title') }}
@@ -89,7 +89,7 @@
                     @can('collectible_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.collectibles.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/collectibles") || request()->is("admin/collectibles/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw fas fa-square c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.collectible.title') }}
@@ -131,7 +131,7 @@
                     @can('requisite_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.requisites.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/requisites") || request()->is("admin/requisites/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+                                <i class="fa-fw far fa-credit-card c-sidebar-nav-icon">
 
                                 </i>
                                 {{ trans('cruds.requisite.title') }}

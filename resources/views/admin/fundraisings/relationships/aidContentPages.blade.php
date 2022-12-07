@@ -1,47 +1,49 @@
-@extends('layouts.admin')
-@section('content')
-@can('requisite_create')
+@can('content_page_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.requisites.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.requisite.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.content-pages.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.contentPage.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
+
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.requisite.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.contentPage.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Requisite">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-aidContentPages">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.requisite.fields.id') }}
+                            {{ trans('cruds.contentPage.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.requisite.fields.title') }}
+                            {{ trans('cruds.contentPage.fields.visible') }}
                         </th>
                         <th>
-                            {{ trans('cruds.requisite.fields.label') }}
+                            {{ trans('cruds.contentPage.fields.title') }}
                         </th>
                         <th>
-                            {{ trans('cruds.requisite.fields.value') }}
+                            {{ trans('cruds.contentPage.fields.excerpt') }}
                         </th>
                         <th>
-                            {{ trans('cruds.requisite.fields.is_link') }}
+                            {{ trans('cruds.contentPage.fields.category') }}
                         </th>
                         <th>
-                            {{ trans('cruds.requisite.fields.priority') }}
+                            {{ trans('cruds.contentPage.fields.featured_image') }}
                         </th>
                         <th>
-                            {{ trans('cruds.requisite.fields.group') }}
+                            {{ trans('cruds.contentPage.fields.aid') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.fundraising.fields.description_short') }}
                         </th>
                         <th>
                             &nbsp;
@@ -49,48 +51,57 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($requisites as $key => $requisite)
-                        <tr data-entry-id="{{ $requisite->id }}">
+                    @foreach($contentPages as $key => $contentPage)
+                        <tr data-entry-id="{{ $contentPage->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $requisite->id ?? '' }}
+                                {{ $contentPage->id ?? '' }}
                             </td>
                             <td>
-                                {{ $requisite->title ?? '' }}
+                                <span style="display:none">{{ $contentPage->visible ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $contentPage->visible ? 'checked' : '' }}>
                             </td>
                             <td>
-                                {{ $requisite->label ?? '' }}
+                                {{ $contentPage->title ?? '' }}
                             </td>
                             <td>
-                                {{ $requisite->value ?? '' }}
+                                {{ $contentPage->excerpt ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $requisite->is_link ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $requisite->is_link ? 'checked' : '' }}>
+                                @foreach($contentPage->categories as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
                             </td>
                             <td>
-                                {{ $requisite->priority ?? '' }}
+                                @if($contentPage->featured_image)
+                                    <a href="{{ $contentPage->featured_image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $contentPage->featured_image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
-                                {{ $requisite->group->name ?? '' }}
+                                {{ $contentPage->aid->title ?? '' }}
                             </td>
                             <td>
-                                @can('requisite_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.requisites.show', $requisite->id) }}">
+                                {{ $contentPage->aid->description_short ?? '' }}
+                            </td>
+                            <td>
+                                @can('content_page_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.content-pages.show', $contentPage->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('requisite_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.requisites.edit', $requisite->id) }}">
+                                @can('content_page_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.content-pages.edit', $contentPage->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('requisite_delete')
-                                    <form action="{{ route('admin.requisites.destroy', $requisite->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('content_page_delete')
+                                    <form action="{{ route('admin.content-pages.destroy', $contentPage->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -107,19 +118,16 @@
     </div>
 </div>
 
-
-
-@endsection
 @section('scripts')
 @parent
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('requisite_delete')
+@can('content_page_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.requisites.massDestroy') }}",
+    url: "{{ route('admin.content-pages.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -150,7 +158,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-Requisite:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-aidContentPages:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

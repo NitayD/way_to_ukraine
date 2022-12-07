@@ -32,6 +32,12 @@
                             {{ trans('cruds.contentCategory.fields.slug') }}
                         </th>
                         <th>
+                            {{ trans('cruds.contentCategory.fields.show_menu') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.contentCategory.fields.show_main_page') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -50,6 +56,14 @@
                             </td>
                             <td>
                                 {{ $contentCategory->slug ?? '' }}
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $contentCategory->show_menu ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $contentCategory->show_menu ? 'checked' : '' }}>
+                            </td>
+                            <td>
+                                <span style="display:none">{{ $contentCategory->show_main_page ?? '' }}</span>
+                                <input type="checkbox" disabled="disabled" {{ $contentCategory->show_main_page ? 'checked' : '' }}>
                             </td>
                             <td>
                                 @can('content_category_show')

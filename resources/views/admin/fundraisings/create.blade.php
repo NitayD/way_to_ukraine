@@ -63,6 +63,16 @@
                 <span class="help-block">{{ trans('cruds.fundraising.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="donation_link">{{ trans('cruds.fundraising.fields.donation_link') }}</label>
+                <input class="form-control {{ $errors->has('donation_link') ? 'is-invalid' : '' }}" type="text" name="donation_link" id="donation_link" value="{{ old('donation_link', '') }}" required>
+                @if($errors->has('donation_link'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('donation_link') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.fundraising.fields.donation_link_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="files">{{ trans('cruds.fundraising.fields.files') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('files') ? 'is-invalid' : '' }}" id="files-dropzone">
                 </div>
