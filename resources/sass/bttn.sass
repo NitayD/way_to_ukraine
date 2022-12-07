@@ -5,7 +5,7 @@
     justify-content: center
     position: relative
     background-color: $primary
-    color: white
+    color: $secondary
     overflow: hidden
     cursor: pointer
     text-transform: uppercase
@@ -38,22 +38,16 @@
         z-index: 2
         text-shadow: none
     &-main
-        background-color: $main
-        color: black
+        background-color: $secondary
+        color: $primary
         font-weight: 600
-        box-shadow: 5px 5px 0 rgba($main, .3)
+        box-shadow: 5px 5px 0 rgba($secondary, .3)
         &::after
-            background-color: darken($main, 13%)
+            background-color: darken($secondary, 13%)
         &:hover
             box-shadow: -5px -5px 0 rgba($primary, .3)
             &::after
-                background-color: darken($main, 20%)
-    &-white
-        background-color: white
-        color: black
-        font-weight: 600
-        &:hover
-            background-color: darken(white, 10%)
+                background-color: darken($secondary, 20%)
 
     &-big
         padding: 10px 20px

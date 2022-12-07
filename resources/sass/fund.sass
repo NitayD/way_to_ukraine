@@ -3,10 +3,10 @@
     flex-direction: column
     justify-content: space-between
     padding: 30px
-    background-color: lighten($primary, 5%)
+    background-color: $primary
     position: relative
     border-radius: 15px
-    box-shadow: 10px 10px 0 rgba(lighten($primary, 10%), .3)
+    box-shadow: 10px 10px 0 rgba($primary, .3)
     h3
         font-weight: 700
     &-card
@@ -17,7 +17,7 @@
             position: center center
         .fund
             &--title, &--desc
-                background-color: rgba(black, .33)
+                background-color: rgba($primary, .33)
                 display: inline-block
                 padding: 5px 15px
     &--title
@@ -37,7 +37,7 @@
             font-size: 20px
             padding: 15px
             background-color: $primary
-            color: white
+            color: $secondary
             border-radius: 15px
             span
                 padding-left: 5px
@@ -45,10 +45,10 @@
                 &:last-child
                     font-weight: 700
     &-main
-        background-color: $main
-        color: black
-        box-shadow: 10px 10px 0 rgba(lighten($main, 10%), .3)
+        background-color: $secondary
+        color: $primary
+        box-shadow: 10px 10px 0 rgba(lighten($secondary, 10%), .3)
         &::after
             content: none
     &-white
-        background-color: $white !important
+        // background-color: $white !important

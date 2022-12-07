@@ -41,7 +41,7 @@
         justify-content: center
         flex-direction: column
         padding: 20px
-        text-shadow: 5px 5px 5px black
+        text-shadow: 5px 5px 5px $primary
 
 
 .second
@@ -50,29 +50,29 @@
 article
     padding-top: 50px
     padding-bottom: 50px
-    background-color: $darkPrimary
+    background-color: $primary
     display: flex
     flex-direction: column
     align-items: center
     h2
+        color: $secondary
         text-align: center
-        color: white
         display: inline-block
         text-align: center
         font-weight: 900
-        border-bottom: 2px solid white
+        border-bottom: 2px solid $secondary
     &:nth-child(odd)
-        background: linear-gradient(to top, $main 0%, darken($main, 10%) 100%)
-        color: black
+        background: linear-gradient(to top, $secondary 0%, darken($secondary, 10%) 100%)
+        color: $primary
         h2
-            color: black
-            border-color: black
+            color: $primary
+            border-color: $primary
         .fund
             border: 7px solid $primary
-            background-color: $main
+            background-color: $secondary
         .more
             background-color: $primary
     &:nth-child(even)
         .more
-            background-color: $main
-            color: black
+            background-color: $secondary
+            color: $primary

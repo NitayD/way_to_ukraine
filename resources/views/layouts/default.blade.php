@@ -27,12 +27,12 @@
 
         <header class="header">
             <div class="container-xxl">
-                <nav class="navbar navbar-dark navbar-expand-lg">
+                <nav class="navbar navbar-expand-lg">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse align-items-center" id="navbarTogglerDemo01">
-                        <a class="navbar-brand d-inline-flex align-items-center" href="{{ route('main') }}">
+                    <div class="collapse navbar-collapse align-items-center">
+                        <a class="d-inline-flex align-items-center" href="{{ route('main') }}">
                             <img src="{{ asset('images/logo.svg') }}" width="100" height="60" class="d-inline-block align-top" alt="">
                             <b>@lang('welcome.header')</b>
                         </a>

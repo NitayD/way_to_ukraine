@@ -1,18 +1,19 @@
-$primary: #004491
-$main: #FFD53C
+$primary: #0A174E
+$secondary: #F5D042
 $white: #fefefe
 $lightWhite: #FFF4C0
-$main2: black
 // $enable-cssgrid: true
+
+$theme-colors: ("primary": $primary,"secondary": $secondary)
+
 @import 'bootstrap'
 
-$darkPrimary: darken($primary, 4%)
 body
     font-family: 'Nunito', sans-serif
     font-weight: 500
     font-size: 18px
-    background-color: darken($primary, 10%)
-    color: $white
+    background-color: $primary
+    color: $secondary
 
 a
     text-decoration: none
@@ -26,6 +27,13 @@ a
     cursor: pointer
     &:hover
         text-decoration: none
+
+h1,h2,h3,h4,h5,h6
+    color: inherit
+
+.notifyjs-bootstrap-base
+    background-position: 8px center !important
+    padding: 8px 15px 8px 30px !important
 
 @import 'fund'
 @import 'bttn'

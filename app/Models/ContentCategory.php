@@ -48,4 +48,9 @@ class ContentCategory extends Model implements HasMedia
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function pages()
+    {
+        return $this->belongsToMany(ContentPage::class);
+    }
 }
