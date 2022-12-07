@@ -41,6 +41,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.contentCategory.fields.description_short') }}
+                        </th>
+                        <td>
+                            {{ $contentCategory->description_short }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.contentCategory.fields.description') }}
+                        </th>
+                        <td>
+                            {!! $contentCategory->description !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.contentCategory.fields.show_menu') }}
                         </th>
                         <td>

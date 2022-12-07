@@ -32,6 +32,9 @@
                             {{ trans('cruds.contentCategory.fields.slug') }}
                         </th>
                         <th>
+                            {{ trans('cruds.contentCategory.fields.description_short') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.contentCategory.fields.show_menu') }}
                         </th>
                         <th>
@@ -56,6 +59,9 @@
                             </td>
                             <td>
                                 {{ $contentCategory->slug ?? '' }}
+                            </td>
+                            <td>
+                                {{ $contentCategory->description_short ?? '' }}
                             </td>
                             <td>
                                 <span style="display:none">{{ $contentCategory->show_menu ?? '' }}</span>
