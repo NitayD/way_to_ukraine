@@ -25,6 +25,10 @@ class StoreContentCategoryRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'description_short' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

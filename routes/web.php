@@ -1,14 +1,6 @@
 <?php
 
-Route::get('/', 'PageController@main')->name('main');
-Route::get('/c/{category}', 'PageController@category')->name('category');
-Route::get('/p/{page}', 'PageController@page')->name('page');
-
-Route::get('/about', 'PageController@about')->name('about');
-Route::get('/fundraisers', 'PageController@fundraisers')->name('fundraisers');
-Route::get('/fundraising/{fundraising}', 'PageController@fundraising')->name('fundraising');
-Route::get('/requisites', 'PageController@requisites')->name('requisites');
-
+Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -42,6 +34,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Content Category
     Route::delete('content-categories/destroy', 'ContentCategoryController@massDestroy')->name('content-categories.massDestroy');
+    Route::post('content-categories/media', 'ContentCategoryController@storeMedia')->name('content-categories.storeMedia');
+    Route::post('content-categories/ckmedia', 'ContentCategoryController@storeCKEditorImages')->name('content-categories.storeCKEditorImages');
     Route::resource('content-categories', 'ContentCategoryController');
 
     // Content Tag
