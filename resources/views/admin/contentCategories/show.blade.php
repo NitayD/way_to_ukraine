@@ -39,6 +39,22 @@
                             {{ $contentCategory->slug }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.contentCategory.fields.show_menu') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $contentCategory->show_menu ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.contentCategory.fields.show_main_page') }}
+                        </th>
+                        <td>
+                            <input type="checkbox" disabled="disabled" {{ $contentCategory->show_main_page ? 'checked' : '' }}>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

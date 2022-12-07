@@ -37,6 +37,7 @@ class Fundraising extends Model implements HasMedia
         'title',
         'description_short',
         'description',
+        'donation_link',
         'sort',
         'created_at',
         'updated_at',
@@ -52,6 +53,11 @@ class Fundraising extends Model implements HasMedia
     public function funraisingPurchasingLists()
     {
         return $this->hasMany(PurchasingList::class, 'funraising_id', 'id');
+    }
+
+    public function aidContentPages()
+    {
+        return $this->hasMany(ContentPage::class, 'aid_id', 'id');
     }
 
     public function getFilesAttribute()

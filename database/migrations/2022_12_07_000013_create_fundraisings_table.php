@@ -15,6 +15,7 @@ class CreateFundraisingsTable extends Migration
             $table->string('title');
             $table->string('description_short')->nullable();
             $table->longText('description')->nullable();
+            $table->string('donation_link');
             $table->integer('sort')->nullable();
             $table->timestamps();
             $table->softDeletes();

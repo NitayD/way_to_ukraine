@@ -65,6 +65,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.fundraising.fields.donation_link') }}
+                        </th>
+                        <td>
+                            {{ $fundraising->donation_link }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.fundraising.fields.files') }}
                         </th>
                         <td>
@@ -116,10 +124,18 @@
                 {{ trans('cruds.purchasingList.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#aid_content_pages" role="tab" data-toggle="tab">
+                {{ trans('cruds.contentPage.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="funraising_purchasing_lists">
             @includeIf('admin.fundraisings.relationships.funraisingPurchasingLists', ['purchasingLists' => $fundraising->funraisingPurchasingLists])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="aid_content_pages">
+            @includeIf('admin.fundraisings.relationships.aidContentPages', ['contentPages' => $fundraising->aidContentPages])
         </div>
     </div>
 </div>

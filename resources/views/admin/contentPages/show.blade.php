@@ -67,16 +67,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.contentPage.fields.tag') }}
-                        </th>
-                        <td>
-                            @foreach($contentPage->tags as $key => $tag)
-                                <span class="label label-info">{{ $tag->name }}</span>
-                            @endforeach
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.contentPage.fields.featured_image') }}
                         </th>
                         <td>
@@ -97,6 +87,14 @@
                                     <img src="{{ $media->getUrl('thumb') }}">
                                 </a>
                             @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.contentPage.fields.aid') }}
+                        </th>
+                        <td>
+                            {{ $contentPage->aid->title ?? '' }}
                         </td>
                     </tr>
                 </tbody>

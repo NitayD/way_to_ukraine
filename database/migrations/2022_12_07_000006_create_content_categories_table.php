@@ -12,6 +12,8 @@ class CreateContentCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
+            $table->boolean('show_menu')->default(0)->nullable();
+            $table->boolean('show_main_page')->default(0)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

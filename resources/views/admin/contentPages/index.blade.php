@@ -41,10 +41,13 @@
                         {{ trans('cruds.contentPage.fields.category') }}
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.tag') }}
+                        {{ trans('cruds.contentPage.fields.featured_image') }}
                     </th>
                     <th>
-                        {{ trans('cruds.contentPage.fields.featured_image') }}
+                        {{ trans('cruds.contentPage.fields.aid') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.fundraising.fields.description_short') }}
                     </th>
                     <th>
                         &nbsp;
@@ -107,8 +110,9 @@
 { data: 'title', name: 'title' },
 { data: 'excerpt', name: 'excerpt' },
 { data: 'category', name: 'categories.name' },
-{ data: 'tag', name: 'tags.name' },
 { data: 'featured_image', name: 'featured_image', sortable: false, searchable: false },
+{ data: 'aid_title', name: 'aid.title' },
+{ data: 'aid.description_short', name: 'aid.description_short' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
