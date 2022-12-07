@@ -31,6 +31,32 @@
                 <span class="help-block">{{ trans('cruds.contentCategory.fields.slug_helper') }}</span>
             </div>
             <div class="form-group">
+                <div class="form-check {{ $errors->has('show_menu') ? 'is-invalid' : '' }}">
+                    <input type="hidden" name="show_menu" value="0">
+                    <input class="form-check-input" type="checkbox" name="show_menu" id="show_menu" value="1" {{ $contentCategory->show_menu || old('show_menu', 0) === 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="show_menu">{{ trans('cruds.contentCategory.fields.show_menu') }}</label>
+                </div>
+                @if($errors->has('show_menu'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('show_menu') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.contentCategory.fields.show_menu_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <div class="form-check {{ $errors->has('show_main_page') ? 'is-invalid' : '' }}">
+                    <input type="hidden" name="show_main_page" value="0">
+                    <input class="form-check-input" type="checkbox" name="show_main_page" id="show_main_page" value="1" {{ $contentCategory->show_main_page || old('show_main_page', 0) === 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="show_main_page">{{ trans('cruds.contentCategory.fields.show_main_page') }}</label>
+                </div>
+                @if($errors->has('show_main_page'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('show_main_page') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.contentCategory.fields.show_main_page_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

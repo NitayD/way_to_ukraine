@@ -36,6 +36,7 @@ class ContentPage extends Model implements HasMedia
         'title',
         'excerpt',
         'page_text',
+        'aid_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -50,11 +51,6 @@ class ContentPage extends Model implements HasMedia
     public function categories()
     {
         return $this->belongsToMany(ContentCategory::class);
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(ContentTag::class);
     }
 
     public function getFeaturedImageAttribute()
@@ -79,6 +75,11 @@ class ContentPage extends Model implements HasMedia
         });
 
         return $files;
+    }
+
+    public function aid()
+    {
+        return $this->belongsTo(Fundraising::class, 'aid_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

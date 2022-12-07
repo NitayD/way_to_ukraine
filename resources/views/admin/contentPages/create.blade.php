@@ -71,24 +71,6 @@
                 <span class="help-block">{{ trans('cruds.contentPage.fields.category_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="tags">{{ trans('cruds.contentPage.fields.tag') }}</label>
-                <div style="padding-bottom: 4px">
-                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
-                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
-                    @foreach($tags as $id => $tag)
-                        <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tag }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('tags'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('tags') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.contentPage.fields.tag_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="featured_image">{{ trans('cruds.contentPage.fields.featured_image') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('featured_image') ? 'is-invalid' : '' }}" id="featured_image-dropzone">
                 </div>
@@ -109,6 +91,20 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.contentPage.fields.images_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="aid_id">{{ trans('cruds.contentPage.fields.aid') }}</label>
+                <select class="form-control select2 {{ $errors->has('aid') ? 'is-invalid' : '' }}" name="aid_id" id="aid_id">
+                    @foreach($aids as $id => $entry)
+                        <option value="{{ $id }}" {{ old('aid_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('aid'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('aid') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.contentPage.fields.aid_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
