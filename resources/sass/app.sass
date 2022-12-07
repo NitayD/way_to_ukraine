@@ -1,0 +1,28 @@
+$primary: #004491
+$main: #FFD53C
+$white: #fefefe
+$lightWhite: #FFF4C0
+$main2: black
+
+$darkPrimary: darken($primary, 4%)
+body
+    font-family: 'Nunito', sans-serif
+    font-weight: 500
+    font-size: 18px
+    background-color: darken($primary, 10%)
+    color: $white
+
+a
+    text-decoration: none
+    color: inherit
+    &:hover
+        text-decoration: none
+        color: inherit
+
+@import 'fund'
+@import 'bttn'
+@import 'header'
+@import 'pages/main'
+@import 'list-item'
+@import 'slider'
+@import 'fundlist'

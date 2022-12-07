@@ -65,6 +65,11 @@ class Fundraising extends Model implements HasMedia
         return $this->getMedia('files');
     }
 
+    public function getItemsSumAttribute()
+    {
+        return $this->funraisingPurchasingLists()->sum('total_sum');
+    }
+
     public function getGallaryAttribute()
     {
         $files = $this->getMedia('gallary');
@@ -80,5 +85,28 @@ class Fundraising extends Model implements HasMedia
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function scopeCollectedSum($query)
+    {
+        return $query
+            ->withSum('funraisingPurchasingLists', 'total_sum');
+    }
+
+    public function scopeMain($query)
+    {
+        return $query
+            ->where('finished', false)
+            ->collectedSum()
+            ->orderby('sort', 'desc')
+            ->limit(3);
+    }
+
+    public function getProgressAttribute()
+    {
+        $info = round($this->already_collected/$this->funraising_purchasing_lists_sum_total_sum*100);
+        if ($info > 100) $info = 100;
+        if ($info < 0) $info = 0;
+        return $info;
     }
 }

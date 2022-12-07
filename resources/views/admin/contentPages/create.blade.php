@@ -187,7 +187,7 @@
 <script>
     Dropzone.options.featuredImageDropzone = {
     url: '{{ route('admin.content-pages.storeMedia') }}',
-    maxFilesize: 2, // MB
+    maxFilesize: 10, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,
     addRemoveLinks: true,
@@ -195,9 +195,9 @@
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 2,
-      width: 4096,
-      height: 4096
+      size: 10,
+      width: 8000,
+      height: 8000
     },
     success: function (file, response) {
       $('form').find('input[name="featured_image"]').remove()
@@ -243,16 +243,16 @@
     var uploadedImagesMap = {}
 Dropzone.options.imagesDropzone = {
     url: '{{ route('admin.content-pages.storeMedia') }}',
-    maxFilesize: 2, // MB
+    maxFilesize: 10, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
     },
     params: {
-      size: 2,
-      width: 4096,
-      height: 4096
+      size: 10,
+      width: 8000,
+      height: 8000
     },
     success: function (file, response) {
       $('form').append('<input type="hidden" name="images[]" value="' + response.name + '">')

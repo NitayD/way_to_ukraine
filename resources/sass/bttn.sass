@@ -1,0 +1,61 @@
+.bttn
+    padding: 7.5px 15px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    position: relative
+    background-color: $primary
+    color: white
+    overflow: hidden
+    cursor: pointer
+    text-transform: uppercase
+    font-size: 16px
+    transition: all 0.3s ease-out
+    border-radius: 5px
+    box-shadow: 5px 5px 0 rgba($primary, .3)
+    &-double
+        &::after
+            content: ''
+            position: absolute
+            width: 100%
+            left: 0
+            top: 0
+            height: 100%
+            background-color: lighten($primary, 20%)
+            transform: translateX(50%)
+            transition: all 0.3s ease-out
+            z-index: 1
+    &:hover
+        color: darken(white, 10%)
+        background-color: lighten($primary, 10%)
+        text-decoration: none
+        box-shadow: -5px -5px 0 rgba(lighten($primary, 10%), .3)
+        &::after
+            transform: translateX(0%)
+            background-color: lighten($primary, 30%)
+    >*
+        position: relative
+        z-index: 2
+        text-shadow: none
+    &-main
+        background-color: $main
+        color: black
+        font-weight: 600
+        box-shadow: 5px 5px 0 rgba($main, .3)
+        &::after
+            background-color: darken($main, 13%)
+        &:hover
+            box-shadow: -5px -5px 0 rgba($primary, .3)
+            &::after
+                background-color: darken($main, 20%)
+    &-white
+        background-color: white
+        color: black
+        font-weight: 600
+        &:hover
+            background-color: darken(white, 10%)
+
+    &-big
+        padding: 10px 20px
+        font-size: 18px
+        font-weight: 700
