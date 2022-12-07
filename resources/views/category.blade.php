@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-    @foreach ($list as $item)
+    @foreach ($category->pages as $item)
         <div class="row p-3">
             <div class="col">
                 <a href="{{ route('page', [

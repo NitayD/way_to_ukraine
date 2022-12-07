@@ -1,6 +1,15 @@
 <?php
 
-Route::redirect('/', '/login');
+Route::get('/', 'PageController@main')->name('main');
+Route::get('/c/{category}', 'PageController@category')->name('category');
+Route::get('/p/{page}', 'PageController@page')->name('page');
+
+Route::get('/about', 'PageController@about')->name('about');
+Route::get('/team', 'PageController@team')->name('team');
+Route::get('/fundraisers', 'PageController@fundraisers')->name('fundraisers');
+Route::get('/fundraising/{fundraising}', 'PageController@fundraising')->name('fundraising');
+Route::get('/requisites', 'PageController@requisites')->name('requisites');
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));

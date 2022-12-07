@@ -1,29 +1,15 @@
 @extends('layouts.default')
 
 @section('content')
-    <article class="container-fluid">
-        <div class="mt-5"></div>
-        <h2 class="mb-4">{{ $data->title }}</h2>
+    <article>
         <div class="container-xxl">
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <div class="px-2">
-                        <div class="slider">
-                            @foreach ($data->gallary as $photo)
-                                <img src="{{ $photo->url }}" alt="">
-                            @endforeach
-                        </div>
-                        @if ($data->itemsSum > 0)
-                            <div class="pt-3">
-                                <div class="fundlist__content mt-4 text-center">
-                                    <h4>Осталось собрать: <b>€ @convert($data->itemsSum - $data->already_collected)</b></h4>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                </div>
+            <div class="d-flex align-items-start flex-column">
+                <h1 class="text-uppercase">{{ $data->title }}</h1>
+                <div>{{ $data->created_at->format('d-m-Y') }}</div>
+            </div>
+            <div class="row mt-4">
                 <div class="col-12 col-md-8">
-                    <div class="fundlist__content">
+                    <div>
                         {!! $data->description !!}
                     </div>
                     @if ($data->funraisingPurchasingLists()->count() > 0)
@@ -77,6 +63,32 @@
                             </table>
                         </div>
                     @endif
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="px-2">
+                        @if ($data->itemsSum > 0)
+                            <div class="fundlist__content pt-5">
+                                <div class="fundlist__progress mt-4 mb-3">
+                                    <div style="width: {{$data->progress}}%;"><span>{{$data->progress}}%</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col d-flex flex-column">
+                                        <span>Собрано</span>
+                                        <b>€ @convert($data->already_collected)</b>
+                                    </div>
+                                    <div class="col text-end d-flex flex-column">
+                                        <span>Осталось собрать</span>
+                                        <b>€ @convert($data->itemsSum - $data->already_collected)</b>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        <div class="slider mt-3">
+                            @foreach ($data->gallary as $photo)
+                                <img src="{{ $photo->url }}" alt="">
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
