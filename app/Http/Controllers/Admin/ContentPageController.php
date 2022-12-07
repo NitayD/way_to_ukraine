@@ -10,7 +10,7 @@ use App\Http\Requests\StoreContentPageRequest;
 use App\Http\Requests\UpdateContentPageRequest;
 use App\Models\ContentCategory;
 use App\Models\ContentPage;
-use App\Models\ContentTag;
+use App\Models\Fundraising;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -27,7 +27,7 @@ class ContentPageController extends Controller
         abort_if(Gate::denies('content_page_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = ContentPage::with(['categories', 'tags'])->select(sprintf('%s.*', (new ContentPage())->table));
+            $query = ContentPage::with(['categories', 'aid'])->select(sprintf('%s.*', (new ContentPage())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -68,14 +68,6 @@ class ContentPageController extends Controller
 
                 return implode(' ', $labels);
             });
-            $table->editColumn('tag', function ($row) {
-                $labels = [];
-                foreach ($row->tags as $tag) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $tag->name);
-                }
-
-                return implode(' ', $labels);
-            });
             $table->editColumn('featured_image', function ($row) {
                 if ($photo = $row->featured_image) {
                     return sprintf(
@@ -87,8 +79,15 @@ class ContentPageController extends Controller
 
                 return '';
             });
+            $table->addColumn('aid_title', function ($row) {
+                return $row->aid ? $row->aid->title : '';
+            });
 
-            $table->rawColumns(['actions', 'placeholder', 'visible', 'category', 'tag', 'featured_image']);
+            $table->editColumn('aid.description_short', function ($row) {
+                return $row->aid ? (is_string($row->aid) ? $row->aid : $row->aid->description_short) : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'visible', 'category', 'featured_image', 'aid']);
 
             return $table->make(true);
         }
@@ -102,16 +101,15 @@ class ContentPageController extends Controller
 
         $categories = ContentCategory::pluck('name', 'id');
 
-        $tags = ContentTag::pluck('name', 'id');
+        $aids = Fundraising::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.contentPages.create', compact('categories', 'tags'));
+        return view('admin.contentPages.create', compact('aids', 'categories'));
     }
 
     public function store(StoreContentPageRequest $request)
     {
         $contentPage = ContentPage::create($request->all());
         $contentPage->categories()->sync($request->input('categories', []));
-        $contentPage->tags()->sync($request->input('tags', []));
         if ($request->input('featured_image', false)) {
             $contentPage->addMedia(storage_path('tmp/uploads/' . basename($request->input('featured_image'))))->toMediaCollection('featured_image');
         }
@@ -133,18 +131,17 @@ class ContentPageController extends Controller
 
         $categories = ContentCategory::pluck('name', 'id');
 
-        $tags = ContentTag::pluck('name', 'id');
+        $aids = Fundraising::pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $contentPage->load('categories', 'tags');
+        $contentPage->load('categories', 'aid');
 
-        return view('admin.contentPages.edit', compact('categories', 'contentPage', 'tags'));
+        return view('admin.contentPages.edit', compact('aids', 'categories', 'contentPage'));
     }
 
     public function update(UpdateContentPageRequest $request, ContentPage $contentPage)
     {
         $contentPage->update($request->all());
         $contentPage->categories()->sync($request->input('categories', []));
-        $contentPage->tags()->sync($request->input('tags', []));
         if ($request->input('featured_image', false)) {
             if (!$contentPage->featured_image || $request->input('featured_image') !== $contentPage->featured_image->file_name) {
                 if ($contentPage->featured_image) {
@@ -177,7 +174,7 @@ class ContentPageController extends Controller
     {
         abort_if(Gate::denies('content_page_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $contentPage->load('categories', 'tags');
+        $contentPage->load('categories', 'aid');
 
         return view('admin.contentPages.show', compact('contentPage'));
     }

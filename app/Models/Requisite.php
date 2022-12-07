@@ -23,8 +23,10 @@ class Requisite extends Model
     ];
 
     protected $fillable = [
+        'title',
         'label',
         'value',
+        'is_link',
         'priority',
         'group_id',
         'created_at',

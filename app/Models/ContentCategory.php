@@ -25,6 +25,8 @@ class ContentCategory extends Model
     protected $fillable = [
         'name',
         'slug',
+        'show_menu',
+        'show_main_page',
         'created_at',
         'updated_at',
         'deleted_at',

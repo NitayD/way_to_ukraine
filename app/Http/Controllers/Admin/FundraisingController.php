@@ -59,6 +59,9 @@ class FundraisingController extends Controller
             $table->editColumn('description_short', function ($row) {
                 return $row->description_short ? $row->description_short : '';
             });
+            $table->editColumn('donation_link', function ($row) {
+                return $row->donation_link ? $row->donation_link : '';
+            });
             $table->editColumn('files', function ($row) {
                 if (!$row->files) {
                     return '';
@@ -154,7 +157,7 @@ class FundraisingController extends Controller
     {
         abort_if(Gate::denies('fundraising_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $fundraising->load('funraisingPurchasingLists');
+        $fundraising->load('funraisingPurchasingLists', 'aidContentPages');
 
         return view('admin.fundraisings.show', compact('fundraising'));
     }

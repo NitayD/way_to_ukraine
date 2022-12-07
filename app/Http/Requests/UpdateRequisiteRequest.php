@@ -17,6 +17,10 @@ class UpdateRequisiteRequest extends FormRequest
     public function rules()
     {
         return [
+            'title' => [
+                'string',
+                'nullable',
+            ],
             'label' => [
                 'string',
                 'required',
