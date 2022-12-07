@@ -25,6 +25,10 @@ class UpdateContentCategoryRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'description_short' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }
