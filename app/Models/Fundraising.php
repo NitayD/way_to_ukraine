@@ -65,11 +65,6 @@ class Fundraising extends Model implements HasMedia
         return $this->getMedia('files');
     }
 
-    public function getItemsSumAttribute()
-    {
-        return $this->funraisingPurchasingLists()->sum('total_sum');
-    }
-
     public function getGallaryAttribute()
     {
         $files = $this->getMedia('gallary');
