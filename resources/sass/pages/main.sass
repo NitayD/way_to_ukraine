@@ -1,78 +1,67 @@
 .first
     background:
-        image: url('/images/main_bg4.jpg') !important
+        image: linear-gradient(to right, $primary 0, rgba($primary, .8) 50%, rgba($primary, .1) 60%), linear-gradient(to top, $primary 0, rgba($primary, .1) 25%), url('/images/main_bg4.jpg') !important
         size: cover !important
-        position: center 75% !important
+        position: 75% 75% !important
         repeat: no-repeat !important
     height: calc(100vh - 260px)
-    position: relative
     margin-top: -86px
-    &::after
-        content: ''
-        position: absolute
-        top: 50%
-        left: 50%
-        width: 100%
-        height: 100%
-        transform: translate(-50%, -50%)
-        background: linear-gradient(to top, rgba($primary, .35) 5%, rgba($primary, .15))
-    // &::before
-    //     width: 800px
-    //     height: 480px
-    //     background-color: rgba(black, .5)
 
     >*
         position: relative
         z-index: 3
     &--header
         font-size: 72px
-        font-weight: 900
+        font-weight: bold
         color: $white
     &--subheader
         text-align: center
-        font-size: 46px
-        font-weight: 700
+        font-size: 24px
         color: $white
+    &--sum
+        margin: 0
+        font-size: 36px
+        font-weight: 900
+        color: $secondary
+    &--text
+        font-size: 18px
+        margin: 0
+    &--stat
+        display: flex
+        justify-content: center
+        flex-direction: column
+        white-space: nowrap
     &--hello
         max-width: 800px
         max-height: 480px
         display: flex
-        align-items: center
+        align-items: flex-start
         justify-content: center
         flex-direction: column
-        padding: 20px
-        text-shadow: 5px 5px 5px $primary
-
-
-.second
 
 
 article
+    margin-top: 100px
     padding-top: 50px
     padding-bottom: 50px
-    background-color: $primary
     display: flex
     flex-direction: column
     align-items: center
     h2
-        color: $secondary
         text-align: center
-        display: inline-block
-        text-align: center
-        font-weight: 900
-        border-bottom: 2px solid $secondary
-    &:nth-child(odd)
-        background: linear-gradient(to top, $secondary 0%, darken($secondary, 10%) 100%)
-        color: $primary
-        h2
-            color: $primary
-            border-color: $primary
-        .fund
-            border: 7px solid $primary
+        font-size: 48px
+        margin-bottom: 30px
+    &.article-card
+        background-color: $primary
+        position: relative
+        z-index: 10
+        [class*=container]
+            margin-top: -200px
+            margin-bottom: -70px
+            padding: 50px
+            border-radius: 20px
             background-color: $secondary
-        .more
-            background-color: $primary
-    &:nth-child(even)
-        .more
-            background-color: $secondary
+            padding: 15px
             color: $primary
+            position: relative
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px

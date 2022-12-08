@@ -1,21 +1,22 @@
-header.header
+.header
     position: fixed
     top: 0
     left: 0
     width: 100%
     z-index: 10
     background-color: rgba($primary, 0.4)
-    color: $secondary
     height: 86px
+    &__logo
+        margin-right: 15px
+        img
+            transform: scale(1.5)
 body
     padding-top: 86px
     // box-shadow: 0 0 5px 5px rgba($primary, 0.4)
 
 
 footer.footer
-    background-color: $primary
     border-top: 20px solid $secondary
-    color: $white
     a
         color: inherit
     h5.title

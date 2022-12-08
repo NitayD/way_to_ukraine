@@ -15,7 +15,7 @@
         crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
 
     @stack('styles')
@@ -27,12 +27,12 @@
 
         <header class="header">
             <div class="container-xxl">
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-dark navbar-expand-lg">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse align-items-center">
-                        <a class="d-inline-flex align-items-center" href="{{ route('main') }}">
+                        <a class="d-inline-flex align-items-center header__logo" href="{{ route('main') }}">
                             <img src="{{ asset('images/logo.svg') }}" width="100" height="60" class="d-inline-block align-top" alt="">
                             <b>@lang('welcome.header')</b>
                         </a>
@@ -55,10 +55,7 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="mx-3">
-                        @lang('welcome.total_donation')<b>€ @convert(\App\Models\Fundraising::sum('already_collected'))</b>
-                    </div>
-                    <a href="{{ route('fundraisers') }}" class="bttn bttn-main">
+                    <a href="{{ route('fundraisers') }}" class="bttn bttn-secondary">
                         <span>@lang('welcome.donate')</span>
                     </a>
                     {{-- <nav class="nav">

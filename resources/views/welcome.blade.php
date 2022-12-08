@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <article class="first">
-        <div class="container-fluid h-100">
-            <div class="d-flex align-items-center justify-content-center h-100">
+    <div class="first">
+        <div class="container-xxl h-100">
+            <div class="d-flex align-items-center h-100">
                 <div class="first--hello">
                     <h1 class="first--header">
                         @lang('welcome.header')
@@ -12,22 +12,48 @@
                     <h3 class="first--subheader">
                         @lang('welcome.subheader')
                     </h3>
-                    <a href="{{ route('fundraisers') }}" class="first--bttn bttn bttn-main bttn-big mt-3">
-                        <span>@lang('welcome.donate')</span>
+                    <a href="{{ route('fundraisers') }}" class="first--bttn bttn bttn-secondary bttn-big mt-3">
+                        @lang('welcome.donate')
                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <article class="container-fluid article-card text-center">
+        <div class="container-xxl">
+            <h2>@lang('welcome.stat')</h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-4">
+                    <div class="block-stat">
+                        € @convert(\App\Models\Fundraising::sum('already_collected'))
+                    </div>
+                    <h3>@lang('welcome.total_donation')</h3>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="block-stat">
+                        {{ \App\Models\Fundraising::count() }}
+                    </div>
+                    <h3>Общее количество сборов</h3>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="block-stat">
+                        {{ \App\Models\Fundraising::where('finished', true)->withCount('') }}
+                    </div>
+                    <h3>Ви приходьте зі своїми грошима</h3>
                 </div>
             </div>
         </div>
     </article>
 
     <article class="container-fluid">
-        <h2 class="mb-4">@lang('welcome.how_we_work')</h2>
         <div class="container-xxl">
+            <h2>@lang('welcome.how_we_work')</h2>
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6">
-                    <div class="fund fund-card fund-main">
+                    <div class="block block-secondary">
                         <h3>Ми збираємо для вас гроші</h3>
-                        <p class="text-justify">
+                        <p>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, labore.
                         </p>
                         <ul>
@@ -39,9 +65,9 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="fund fund-card">
+                    <div class="block block-primary">
                         <h3>Ви приходьте зі своїми грошима</h3>
-                        <p class="text-justify">
+                        <p>
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea nihil magni numquam.
                         </p>
                         <ul>
@@ -62,29 +88,23 @@
             <div class="row justify-content-center">
                 @foreach ($funds as $item)
                     <div class="col-12 col-md-4 my-3">
-                        <div class="fund fund-card h-100">
-                            <div class="fund--title">
-                                {{$item->title}}
-                            </div>
-                            <div class="fund--desc">
+                        <div class="block block-secondary">
+                            <h3>{{$item->title}}</h3>
+                            <div>
                                 {{$item->description_short}}
                             </div>
-                            <div class="mt-auto"></div>
                             @if (!empty($item->funraising_purchasing_lists_sum_total_sum))
-                                <div class="fund--progress">
-                                    <div class="fund--progress_ints">
-                                        <span>€ @convert($item->already_collected)</span>
-                                        <span>/</span>
-                                        <span>€ @convert($item->funraising_purchasing_lists_sum_total_sum)</span>
-                                    </div>
-                                    <div data-progress="{{$item->progress}}"></div>
+                                <div class="fund--progress_ints">
+                                    <span>€ @convert($item->already_collected)</span>
+                                    <span>/</span>
+                                    <span>€ @convert($item->funraising_purchasing_lists_sum_total_sum)</span>
                                 </div>
                             @else
                                 <div class="fund--progress_ints">
                                     Уже собрано: <span>€ @convert($item->already_collected)</span>
                                 </div>
                             @endif
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between w-100 mt-3">
                                 <a href="{{ route('fundraising', [
                                     'fundraising' => $item->id
                                 ]) }}" class="bttn bttn-white">
@@ -106,7 +126,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="{{ route('fundraisers') }}" class="bttn bttn-big mt-5 more">@lang('welcome.more')</a>
+            <a href="{{ route('fundraisers') }}" class="bttn bttn-big mt-5 more bttn-secondary">@lang('welcome.more')</a>
         </div>
     </article>
 
@@ -119,21 +139,19 @@
                 <div class="row justify-content-center">
                     @foreach ($item->pages as $page)
                         <div class="col-12 col-md-4 my-3">
-                            <div class="fund fund-card {{!empty($page->featured_image) ? 'fund-image': '' }} h-100" style="background-image: url({{!empty($page->featured_image) ? asset($page->featured_image->getUrl()): ''}});">
-                                <div class="fund--title">
+                            <div class="block block-secondary h-100">
+                                <figure><img src="{{!empty($page->featured_image) ? asset($page->featured_image->getUrl()): ''}}" alt=""></figure>
+                                <h3 class="w-100">
                                     {{$page->title}}
-                                </div>
-                                <div class="fund--desc my-3">
+                                </h3>
+                                <div>
                                     {{$page->excerpt}}
                                 </div>
-                                <div class="mt-auto"></div>
-                                <div class="d-flex justify-content-end">
+                                <div class="d-flex justify-content-end mt-auto pt-3 w-100">
                                     <a href="{{ route('page', [
                                         'page' => $page->id
                                     ]) }}" class="bttn">
-                                        <span>
-                                            Детали
-                                        </span>
+                                        Детали
                                     </a>
                                 </div>
                             </div>
@@ -144,7 +162,7 @@
             <div class="d-flex justify-content-center">
                 <a href="{{ route('category', [
                     'category' => $item->id
-                ]) }}" class="bttn bttn-big mt-5 more">@lang('welcome.more')</a>
+                ]) }}" class="bttn bttn-big mt-5 more bttn-secondary">@lang('welcome.more')</a>
             </div>
         </article>
     @endforeach
