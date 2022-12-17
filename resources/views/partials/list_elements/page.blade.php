@@ -1,4 +1,6 @@
-<div class="list-item">
+<a href="{{ route('page', [
+    'page' => $item->id
+]) }}" class="list-item d-block">
     <div class="row">
         @if ($item->featuredImage)
             <div class="col-auto">
@@ -23,4 +25,4 @@
             </div>
         </div>
     </div>
-</div>
+</a>

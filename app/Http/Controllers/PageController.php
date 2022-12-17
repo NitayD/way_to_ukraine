@@ -36,7 +36,7 @@ class PageController extends Controller
     public function page(ContentPage $page)
     {
         return view('page', [
-            'page' => $page,
+            'data' => $page,
         ]);
     }
 
@@ -54,7 +54,8 @@ class PageController extends Controller
     {
         return view('requisites', [
             'reqs' => RequisiteGroup::wReqs()->get(),
-            'nogroup' => Requisite::nogroup()->get()
+            'nogroup' => Requisite::nogroup()->get(),
+            'founders' => Fundraising::where('finished', false)->get()
         ]);
     }
 

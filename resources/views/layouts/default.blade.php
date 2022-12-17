@@ -34,7 +34,7 @@
                     <div class="collapse navbar-collapse align-items-center">
                         <a class="d-inline-flex align-items-center header__logo" href="{{ route('main') }}">
                             <img src="{{ asset('images/logo.svg') }}" width="100" height="60" class="d-inline-block align-top" alt="">
-                            <b>@lang('welcome.header')</b>
+                            <b>@lang('welcome.main.header')</b>
                         </a>
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -43,6 +43,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('team') }}">@lang('welcome.team')</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('fundraisers') }}">@lang('welcome.donation.title')</a>
+                            </li>
+
                             @php
                                 $categories = \App\Models\ContentCategory::all();
                             @endphp
@@ -71,6 +75,27 @@
         </header>
 
         <main>
+            @if (!empty($breadcrumbs))
+                <div class="container-xxl mt-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            @foreach ($breadcrumbs as $item)
+                                @if (!empty($item['link']))
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ $item['link'] }}">
+                                            {{ $item['text'] }}
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        {{ $item['text'] }}
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ol>
+                    </nav>
+                </div>
+            @endif
             @yield("content")
         </main>
 
@@ -78,19 +103,19 @@
             <div class="container-xxl">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6">
-                        <h5 class="title">Menu</h5>
+                        <h5 class="title">@lang('welcome.footer.menu')</h5>
                         <ul class="link-list">
                             <li>
-                                <a href="{{ route('about') }}">О нас</a>
+                                <a href="{{ route('about') }}">@lang('welcome.about')</a>
                             </li>
                             <li>
-                                <a href="{{ route('team') }}">Команда</a>
+                                <a href="{{ route('team') }}">@lang('welcome.team')</a>
                             </li>
                             <li>
-                                <a href="{{ route('fundraisers') }}">Сборы</a>
+                                <a href="{{ route('fundraisers') }}">@lang('welcome.donation.title')</a>
                             </li>
                             <li>
-                                <a href="{{ route('requisites') }}">Реквизиты</a>
+                                <a href="{{ route('requisites') }}">@lang('welcome.reqs')</a>
                             </li>
                             @php
                                 $cats = \App\Models\ContentCategory::all();
@@ -105,7 +130,7 @@
                         </ul>
                     </div>
                     <div class="col-12 col-md-6">
-                        <h5 class="title">Social media</h5>
+                        <h5 class="title">@lang('welcome.footer.social')</h5>
                         <div class="social">
                             <a href="" class="social-link">
                                 <img class="img-fluid" src="{{ asset('/images/social/facebook.png') }}" alt="">
@@ -123,7 +148,7 @@
                                 <img class="img-fluid" src="{{ asset('/images/social/youtube.png') }}" alt="">
                             </a>
                         </div>
-                        <h5 class="title">E-mail</h5>
+                        <h5 class="title">@lang('welcome.footer.email')</h5>
                         <ul class="mail link-list">
                             <li>
                                 <a href="mailto:test@test.test">

@@ -1,5 +1,5 @@
 .fundlist, .fundlist__content
-    background-color: $primary
+    background-color: lighten($primary, 5%)
     border-radius: 15px
     overflow: hidden
     color: $secondary
@@ -8,26 +8,33 @@
     &__progress
         display: flex
         align-items: center
-        div
-            display: inline-flex
-            align-items: center
-            justify-content: center
-            position: relative
+        justify-content: center
+        position: relative
+        padding-bottom: 20px
+        bottom: 0
+        margin: 15px -15px -15px
+        text-align: center
+        &--bar
+            position: absolute
+            bottom: 0
+            left: 0
+            right: 0
+            width: 100%
+            height: 20px
             background-color: #fff
-            height: 10px
             span
-                transform: translateX(-50%)
                 position: absolute
-                left: 100%
-                bottom: calc(100% + 5px)
-                background-color: #fff
-                display: flex
-                align-items: center
-                justify-content: center
-                padding: 10px
-                color: $primary
+                left: 0
+                top: 0
+                bottom: 0
+                height: 20px
+                background-color: $secondary
+            &--primary
+                span
+                    background-color: $primary
     &__content
         padding: 15px
+        position: relative
         img
             border-radius: 15px
             margin-bottom: 15px

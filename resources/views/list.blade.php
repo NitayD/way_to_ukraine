@@ -1,26 +1,17 @@
-@extends('layouts.default')
+@extends('layouts.default', [
+    'breadcrumbs' => [
+        [
+            'text' => trans('welcome.main.title'),
+            'link' => route('main'),
+        ],
+        [
+            'text' => $title,
+        ],
+    ]
+])
 
 @section('content')
-
-    <article class="first">
-        <div class="container-fluid h-100">
-            <div class="d-flex align-items-center justify-content-center h-100">
-                <div class="first--hello">
-                    <h1 class="first--header">
-                        WAY TO UKRAINE
-                    </h1>
-                    <h3 class="first--subheader">
-                        Фонд помощи ВСУ
-                    </h3>
-                    <a href="{{ route('fundraisers') }}" class="first--bttn bttn bttn-main bttn-big mt-3">
-                        <span>Задонатить</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </article>
-
-    <article class="container-fluid">
+    <article class="container-fluid mt-3">
         <h2 class="mb-4">{{ $title }}</h2>
         <div class="container-xxl">
             <div class="row">
@@ -34,10 +25,4 @@
     </article>
 
 @endsection
-
-@push('scripts')
-    <script src="{{ asset('/js/probar.js') }}"></script>
-    <script>
-    </script>
-@endpush
 

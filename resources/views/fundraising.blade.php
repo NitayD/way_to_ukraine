@@ -1,11 +1,25 @@
-@extends('layouts.default')
+@extends('layouts.default', [
+    'breadcrumbs' => [
+        [
+            'text' => trans('welcome.main.title'),
+            'link' => route('main'),
+        ],
+        [
+            'text' => 'Список сборов',
+            'link' => route('fundraisers'),
+        ],
+        [
+            'text' => $data->title,
+        ],
+    ]
+])
 
 @section('content')
-    <article>
+    <article class="mt-3">
         <div class="container-xxl">
             <div class="d-flex align-items-start flex-column">
                 <h1 class="text-uppercase">{{ $data->title }}</h1>
-                <div>{{ $data->created_at->format('d-m-Y') }}</div>
+                <i>{{ $data->created_at->format('d-m-Y') }}</i>
             </div>
             <div class="row mt-4">
                 <div class="col-12 col-md-8">
@@ -13,51 +27,50 @@
                         {!! $data->description !!}
                     </div>
                     @if ($data->funraisingPurchasingLists()->count() > 0)
+                        <div class="my-5">
+                            <div class="slider--items" id="items">
+                                @foreach ($data->funraisingPurchasingLists()->with('item')->get() as $item)
+                                    <div class="block block-secondary">
+                                        @if ($item->item->photo->count())
+                                            <figure class="slider--mini">
+                                                @foreach ($item->item->photo as $photo)
+                                                    <img src="{{asset($photo->getUrl('preview'))}}" alt="">
+                                                @endforeach
+                                            </figure>
+                                        @endif
+                                        <b>{{$item->item->name}}</b>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                         <div class="fundlist mt-5">
                             <table>
-                                <thead>
+                                <thead class="text-white">
                                     <tr class="text-center">
                                         <th>Наименование</th>
                                         <th>Количество</th>
                                         <th>Общая сумма</th>
                                     </tr>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data->funraisingPurchasingLists()->with('item')->get() as $item)
-                                    <tr>
-                                        <th>
-                                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{$item->item->id}}" role="button" aria-expanded="false" aria-controls="collapseExample{{$item->item->id}}">
-                                                {{$item->item->name}}
-                                            </a>
-                                        </th>
-                                        <td>
-                                            {{$item->amount}}
-                                        </td>
-                                        <td>
-                                            € @convert($item->total_sum)
-                                        </td>
-                                    </tr>
-                                    <tr class="description">
-                                        <td colspan="3">
-                                            <div class="collapse px-4" id="collapseExample{{$item->item->id}}">
-                                                <div class="row">
-                                                    <div class="col-auto">
-                                                        <div class="px-4">
-                                                            <div class="item-gallary mb-3">
-                                                                @foreach ($item->item->photo as $image)
-                                                                    <img src="{{ $image->url }}" alt="">
-                                                                @endforeach
-                                                            </div>
-                                                            {{ $item->item->description_short }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        {!! $item->item->description !!}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <th>{{$item->item->name}}</th>
+                                            <td>
+                                                {{$item->amount}}
+                                            </td>
+                                            <th>
+                                                € @convert($item->total_sum)
+                                            </th>
+                                        </tr>
+                                        <tr class="description text-white text-justify">
+                                            <td colspan="3">
+                                                {{ $item->item->description_short }}
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -65,27 +78,33 @@
                     @endif
                 </div>
                 <div class="col-12 col-md-4">
-                    <div class="px-2">
-                        @if ($data->itemsSum > 0)
-                            <div class="fundlist__content pt-5">
-                                <div class="fundlist__progress mt-4 mb-3">
-                                    <div style="width: {{$data->progress}}%;"><span>{{$data->progress}}%</span></div>
+                    <div class="px-3">
+                        <div class="fundlist__content mb-4">
+                            <div class="row justify-content-center">
+                                <div class="col d-flex flex-column @if ($data->itemsSum == 0) text-center @endif">
+                                    <span class="text-white">Собрано</span>
+                                    € @convert($data->already_collected)
                                 </div>
-                                <div class="row">
-                                    <div class="col d-flex flex-column">
-                                        <span>Собрано</span>
-                                        <b>€ @convert($data->already_collected)</b>
-                                    </div>
+                                @if ($data->itemsSum > 0)
                                     <div class="col text-end d-flex flex-column">
-                                        <span>Осталось собрать</span>
+                                        <span class="text-white">Осталось собрать</span>
                                         <b>€ @convert($data->itemsSum - $data->already_collected)</b>
                                     </div>
-                                </div>
+                                @endif
                             </div>
-                        @endif
-                        <div class="slider mt-3">
+                            @if ($data->itemsSum > 0)
+                                <div class="fundlist__progress">
+                                    {{$data->progress}}%
+                                    <div class="fundlist__progress--bar"><span style="width: {{$data->progress}}%;"></span></div>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="my-4">
+                            <a href="{{ $data->donation_link }}" target="_blank" class="bttn bttn-secondary d-block text-center">Ссылка на оплату</a>
+                        </div>
+                        <div class="slider">
                             @foreach ($data->gallary as $photo)
-                                <img src="{{ $photo->url }}" alt="">
+                                <img src="{{ $photo->preview }}" alt="">
                             @endforeach
                         </div>
                     </div>
@@ -110,7 +129,7 @@
                 speed: 300,
                 slidesToShow: 1,
                 arrows: false,
-                autoplay: true,
+                autoplay: false,
                 adaptiveHeight: true,
                 dots: true,
             });
@@ -120,6 +139,22 @@
                 slidesToShow: 1,
                 adaptiveHeight: true,
             });
+            $('.slider--items').slick({
+                lazyLoad: 'ondemand',
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                arrows: true,
+                autoplay: false,
+                dots: false,
+            })
+            $('.slider--mini').slick({
+                lazyLoad: 'ondemand',
+                slidesToShow: 1,
+                arrows: false,
+                autoplay: true,
+                dots: false,
+            })
             $('[data-bs-toggle]').on('click', function () {
                 $('.item-gallary').slick('reinit')
             })

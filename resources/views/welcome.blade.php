@@ -1,24 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-
-    <div class="first">
-        <div class="container-xxl h-100">
-            <div class="d-flex align-items-center h-100">
-                <div class="first--hello">
-                    <h1 class="first--header">
-                        @lang('welcome.header')
-                    </h1>
-                    <h3 class="first--subheader">
-                        @lang('welcome.subheader')
-                    </h3>
-                    <a href="{{ route('fundraisers') }}" class="first--bttn bttn bttn-secondary bttn-big mt-3">
-                        @lang('welcome.donate')
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('partials.first')
 
     <article class="container-fluid article-card text-center">
         <div class="container-xxl">
@@ -28,64 +11,41 @@
                     <div class="block-stat">
                         € @convert(\App\Models\Fundraising::sum('already_collected'))
                     </div>
-                    <h3>@lang('welcome.total_donation')</h3>
+                    <h3>
+                        @lang('welcome.stats.col1')
+                    </h3>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="block-stat">
-                        {{ \App\Models\Fundraising::count() }}
+                        12+
                     </div>
-                    <h3>Общее количество сборов</h3>
+                    <h3>
+                        @lang('welcome.stats.col2')
+                    </h3>
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="block-stat">
-                        {{ \App\Models\Fundraising::where('finished', true)->withCount('') }}
+                        6+
                     </div>
-                    <h3>Ви приходьте зі своїми грошима</h3>
+                    <h3>
+                        @lang('welcome.stats.col3')
+                    </h3>
                 </div>
             </div>
         </div>
     </article>
 
-    <article class="container-fluid">
-        <div class="container-xxl">
-            <h2>@lang('welcome.how_we_work')</h2>
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-6">
-                    <div class="block block-secondary">
-                        <h3>Ми збираємо для вас гроші</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, labore.
-                        </p>
-                        <ul>
-                            <li>Lorem, ipsum dolor.</li>
-                            <li>Lorem, ipsum dolor.</li>
-                            <li>Lorem, ipsum dolor.</li>
-                            <li>Lorem, ipsum dolor.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div class="block block-primary">
-                        <h3>Ви приходьте зі своїми грошима</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea nihil magni numquam.
-                        </p>
-                        <ul>
-                            <li>Lorem, ipsum dolor.</li>
-                            <li>Lorem, ipsum dolor.</li>
-                            <li>Lorem, ipsum dolor.</li>
-                            <li>Lorem, ipsum dolor.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </article>
+    @include('partials.how_we_work')
 
     <article class="container-fluid p-5 second">
-        <h2 class="text-center mb-4">Актуальные сборы</h2>
+        <h2 class="text-center mb-4">@lang('welcome.donation.title')</h2>
         <div class="container-xxl">
             <div class="row justify-content-center">
+                @empty($funds->count())
+                    <div class="col-6 text-center">
+                        @lang('welcome.donation.emptyList')
+                    </div>
+                @endempty
                 @foreach ($funds as $item)
                     <div class="col-12 col-md-4 my-3">
                         <div class="block block-secondary">
@@ -115,9 +75,7 @@
                                 <a href="{{ route('fundraising', [
                                     'fundraising' => $item->id
                                 ]) }}" class="bttn">
-                                    <span>
-                                        Детали
-                                    </span>
+                                    <span>@lang('welcome.detail')</span>
                                 </a>
                             </div>
                         </div>
@@ -137,10 +95,12 @@
             </h2>
             <div class="container-xxl">
                 <div class="row justify-content-center">
-                    @foreach ($item->pages as $page)
+                    @foreach ($item->pages()->visible()->limit(3)->get() as $page)
                         <div class="col-12 col-md-4 my-3">
                             <div class="block block-secondary h-100">
-                                <figure><img src="{{!empty($page->featured_image) ? asset($page->featured_image->getUrl()): ''}}" alt=""></figure>
+                                <figure>
+                                    <img src="{{!empty($page->featured_image) ? asset($page->featured_image->getUrl('preview')): ''}}" alt="">
+                                </figure>
                                 <h3 class="w-100">
                                     {{$page->title}}
                                 </h3>
@@ -151,7 +111,7 @@
                                     <a href="{{ route('page', [
                                         'page' => $page->id
                                     ]) }}" class="bttn">
-                                        Детали
+                                        @lang('welcome.detail')
                                     </a>
                                 </div>
                             </div>
@@ -170,7 +130,7 @@
 
 
 
-    <article class="container-fluid px-5 second">
+    <article class="container-fluid px-5">
         <h2 class="text-center mb-4">@lang('welcome.reqs')</h2>
         <div class="container-xxl">
             <div class="row justify-content-center">
@@ -190,7 +150,7 @@
             </div>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="{{ route('requisites') }}" class="bttn bttn-big mt-5 more">@lang('welcome.more')</a>
+            <a href="{{ route('requisites') }}" class="bttn bttn-secondary bttn-big mt-5 more">@lang('welcome.more')</a>
         </div>
     </article>
 
