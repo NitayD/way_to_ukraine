@@ -63,7 +63,7 @@
                                                 {{$item->amount}}
                                             </td>
                                             <th>
-                                                € @convert($item->total_sum)
+                                                ₴ @convert($item->total_sum)
                                             </th>
                                         </tr>
                                         <tr class="description text-white text-justify">
@@ -83,12 +83,12 @@
                             <div class="row justify-content-center">
                                 <div class="col d-flex flex-column @if ($data->itemsSum == 0) text-center @endif">
                                     <span class="text-white">Собрано</span>
-                                    € @convert($data->already_collected)
+                                    ₴ @convert($data->already_collected)
                                 </div>
                                 @if ($data->itemsSum > 0)
                                     <div class="col text-end d-flex flex-column">
                                         <span class="text-white">Осталось собрать</span>
-                                        <b>€ @convert($data->itemsSum - $data->already_collected)</b>
+                                        <b>₴ @convert($data->itemsSum - $data->already_collected)</b>
                                     </div>
                                 @endif
                             </div>

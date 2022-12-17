@@ -9,7 +9,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-4">
                     <div class="block-stat">
-                        € @convert(\App\Models\Fundraising::sum('already_collected'))
+                        ₴ @convert(intval(\App\Models\Fundraising::sum('already_collected')) + 2085000)
                     </div>
                     <h3>
                         @lang('welcome.stats.col1')
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="block-stat">
-                        12+
+                        12
                     </div>
                     <h3>
                         @lang('welcome.stats.col2')
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="block-stat">
-                        6+
+                        6
                     </div>
                     <h3>
                         @lang('welcome.stats.col3')
@@ -55,13 +55,13 @@
                             </div>
                             @if (!empty($item->funraising_purchasing_lists_sum_total_sum))
                                 <div class="fund--progress_ints">
-                                    <span>€ @convert($item->already_collected)</span>
+                                    <span>₴ @convert($item->already_collected)</span>
                                     <span>/</span>
-                                    <span>€ @convert($item->funraising_purchasing_lists_sum_total_sum)</span>
+                                    <span>₴ @convert($item->funraising_purchasing_lists_sum_total_sum)</span>
                                 </div>
                             @else
                                 <div class="fund--progress_ints">
-                                    Уже собрано: <span>€ @convert($item->already_collected)</span>
+                                    Уже собрано: <span>₴ @convert($item->already_collected)</span>
                                 </div>
                             @endif
                             <div class="d-flex justify-content-between w-100 mt-3">

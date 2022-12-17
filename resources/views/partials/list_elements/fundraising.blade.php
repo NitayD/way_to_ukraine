@@ -20,12 +20,12 @@
     <div class="row justify-content-center">
         <div class="col d-flex flex-column @if ($item->itemsSum == 0) text-center @endif">
             <span>Собрано</span>
-            € @convert($item->already_collected)
+            ₴ @convert($item->already_collected)
         </div>
         @if ($item->itemsSum > 0)
             <div class="col text-end d-flex flex-column">
                 <span>Осталось собрать</span>
-                <b>€ @convert($item->itemsSum - $item->already_collected)</b>
+                <b>₴ @convert($item->itemsSum - $item->already_collected)</b>
             </div>
         @endif
     </div>
