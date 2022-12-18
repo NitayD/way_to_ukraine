@@ -4,9 +4,9 @@
             <img src="{{ $item->featuredImage->getUrl('preview') }}" alt="">
         </figure>
     @endif
-    <div class="list-item__title">
+    <h3 class="list-item__title">
         {{ $item->title }}
-    </div>
+    </h3>
     <i class="list-item__date mb-3 mx-0 d-block w-100">{{ $item->created_at->format('d.m.Y') }}</i>
     <div class="list-item__description">
         {{ $item->excerpt }}
