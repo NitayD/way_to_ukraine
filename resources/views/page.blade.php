@@ -35,7 +35,7 @@
                 <h1 class="text-uppercase">{{ $data->title }}</h1>
                 <i>{{ $data->created_at->format('d-m-Y') }}</i>
             </div>
-            <div class="html-content">
+            <div class="html-content mt-3">
                 @foreach ($content as $chunk)
                     {!! $chunk !!}
                     @if (!$loop->last)
