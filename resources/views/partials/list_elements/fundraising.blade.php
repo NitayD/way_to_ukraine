@@ -30,7 +30,7 @@
         @endif
     </div>
     <div class="d-flex mt-3 justify-content-between">
-        <a href="{{ $item->donation_link }}" class="bttn bttn-primary">Ссылка на банк</a>
+        <a href="{{ $item->donation_link }}" class="bttn bttn-primary" target="_blank">Ссылка на банк</a>
         <a href="{{ route('fundraising', [
             'fundraising' => $item->id
         ]) }}" class="bttn bttn-primary">@lang('welcome.detail')</a>

@@ -67,7 +67,7 @@
                             <div class="d-flex justify-content-between w-100 mt-3">
                                 <a href="{{ route('fundraising', [
                                     'fundraising' => $item->id
-                                ]) }}" class="bttn bttn-white">
+                                ]) }}" class="bttn bttn-white" target="_blank">
                                     <span>
                                         Сбор на банку
                                     </span>
