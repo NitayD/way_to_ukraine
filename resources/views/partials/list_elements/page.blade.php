@@ -1,28 +1,19 @@
-<a href="{{ route('page', [
-    'page' => $item->id
-]) }}" class="list-item d-block">
-    <div class="row">
-        @if ($item->featuredImage)
-            <div class="col-auto">
-                <div class="list-item__preview">
-                    <img src="{{ $item->featuredImage->preview }}" alt="">
-                </div>
-                <div class="d-flex flex-column">
-                </div>
-            </div>
-        @endif
-        <div class="col">
-            <div class="d-flex justify-content-between mb-3">
-                <div class="list-item__title">
-                    {{ $item->title }}
-                </div>
-                <div class="list-item__date">
-                    {{ $item->created_at->format('d.m.Y') }}
-                </div>
-            </div>
-            <div class="list-item__description">
-                {{ $item->excerpt }}
-            </div>
-        </div>
+<div class="block block-secondary">
+    @if (!empty($item->featuredImage))
+        <figure>
+            <img src="{{ $item->featuredImage->getUrl('preview') }}" alt="">
+        </figure>
+    @endif
+    <div class="list-item__title">
+        {{ $item->title }}
     </div>
-</a>
+    <i class="list-item__date mb-3 mx-0 d-block w-100">{{ $item->created_at->format('d.m.Y') }}</i>
+    <div class="list-item__description">
+        {{ $item->excerpt }}
+    </div>
+    <div class="d-flex mt-3 justify-content-end">
+        <a href="{{ route('page', [
+            'page' => $item->id
+        ]) }}" class="bttn bttn-primary">@lang('welcome.detail')</a>
+    </div>
+</div>

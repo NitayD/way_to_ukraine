@@ -24,6 +24,10 @@
     )
 ])
 
+@php
+    $content = explode('[[SLIDER]]', $data->page_text);
+@endphp
+
 @section('content')
     <article class="mt-3">
         <div class="container-xxl">
@@ -31,21 +35,28 @@
                 <h1 class="text-uppercase">{{ $data->title }}</h1>
                 <i>{{ $data->created_at->format('d-m-Y') }}</i>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 col-md-8">
-                    <div class="html-content">
-                        {!! $data->page_text !!}
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="px-3">
+            <div class="html-content">
+                @foreach ($content as $chunk)
+                    {!! $chunk !!}
+                    @if (!$loop->last)
+                    <div class="px-4">
                         <div class="slider">
                             @foreach ($data->images as $photo)
-                                <img src="{{ $photo->url }}" alt="">
+                                <img src="{{ $photo->preview }}" data-lazy="{{ $photo->url }}" alt="">
                             @endforeach
                         </div>
                     </div>
+                    @endif
+                @endforeach
+                @if (count($content) < 2)
+                <div class="px-4">
+                    <div class="slider">
+                        @foreach ($data->images as $photo)
+                            <img src="{{ $photo->preview }}" data-lazy="{{ $photo->url }}" alt="">
+                        @endforeach
+                    </div>
                 </div>
+                @endif
             </div>
         </div>
     </article>
@@ -61,7 +72,7 @@
     <script>
         $(function () {
             $('.slider').slick({
-                lazyLoad: 'ondemand',
+                lazyLoad: 'progressive',
                 infinite: true,
                 speed: 300,
                 slidesToShow: 1,
@@ -71,13 +82,13 @@
                 dots: true,
             });
             $('.item-gallary').slick({
-                lazyLoad: 'ondemand',
+                lazyLoad: 'progressive',
                 speed: 300,
                 slidesToShow: 1,
                 adaptiveHeight: true,
             });
             $('.slider--items').slick({
-                lazyLoad: 'ondemand',
+                lazyLoad: 'progressive',
                 infinite: true,
                 speed: 300,
                 slidesToShow: 3,
@@ -86,7 +97,7 @@
                 dots: false,
             })
             $('.slider--mini').slick({
-                lazyLoad: 'ondemand',
+                lazyLoad: 'progressive',
                 slidesToShow: 1,
                 arrows: false,
                 autoplay: true,

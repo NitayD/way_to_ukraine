@@ -16,7 +16,7 @@
         <div class="container-xxl">
             <div class="row">
                 @foreach ($list as $item)
-                    <div class="col-12 col-md-6 my-3">
+                    <div class="col-12 col-md-4 my-3">
                         @include('partials.list_elements.'.$itemType, ['item' => $item])
                     </div>
                 @endforeach

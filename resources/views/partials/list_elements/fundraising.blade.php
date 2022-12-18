@@ -22,7 +22,7 @@
             <span>Собрано</span>
             ₴ @convert($item->already_collected)
         </div>
-        @if ($item->itemsSum > 0)
+        @if ($item->itemsSum > 0 && ($item->itemsSum - $item->already_collected) > 0)
             <div class="col text-end d-flex flex-column">
                 <span>Осталось собрать</span>
                 <b>₴ @convert($item->itemsSum - $item->already_collected)</b>

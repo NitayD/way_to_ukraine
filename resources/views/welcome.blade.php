@@ -136,7 +136,7 @@
             <div class="row justify-content-center">
                 @foreach ($reqs as $item)
                     <div class="col-12 col-lg-6 my-3">
-                        <div class="fund">
+                        <div class="block block-secondary">
                             <h3 class="text-center">{{ $item->name }}</h3>
                             @foreach ($item->groupRequisites as $req)
                                 <p>
