@@ -49,6 +49,11 @@
                 @foreach ($funds as $item)
                     <div class="col-12 col-md-4 my-3">
                         <div class="block block-secondary">
+                            @if ($item->getMedia('gallary')->count() > 0)
+                                <figure>
+                                    <img src="{{ $item->gallary[0]->preview }}" alt="">
+                                </figure>
+                            @endif
                             <h3>{{$item->title}}</h3>
                             <div>
                                 {{$item->description_short}}
@@ -61,22 +66,22 @@
                                 </div>
                             @else
                                 <div class="fund--progress_ints">
-                                    Уже собрано: <span>₴ @convert($item->already_collected)</span>
+                                    @lang('welcome.donate.collected'): <span>₴ @convert($item->already_collected)</span>
                                 </div>
                             @endif
-                            <div class="d-flex justify-content-between w-100 mt-3">
-                                <a href="{{ route('fundraising', [
-                                    'fundraising' => $item->id
-                                ]) }}" class="bttn bttn-white" target="_blank">
-                                    <span>
-                                        Сбор на банку
-                                    </span>
-                                </a>
-                                <a href="{{ route('fundraising', [
-                                    'fundraising' => $item->id
-                                ]) }}" class="bttn">
-                                    <span>@lang('welcome.detail')</span>
-                                </a>
+                            <div class="d-flex justify-content-between mt-3">
+                                <div class="me-2">
+                                    <a href="{{ $item->donation_link }}" class="bttn bttn-white" target="_blank">
+                                        @lang('welcome.donate.link')
+                                    </a>
+                                </div>
+                                <div class="ms-2">
+                                    <a href="{{ route('fundraising', [
+                                        'fundraising' => $item->id
+                                    ]) }}" class="bttn">
+                                        @lang('welcome.detail')
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -95,7 +100,7 @@
             </h2>
             <div class="container-xxl">
                 <div class="row justify-content-center">
-                    @foreach ($item->pages()->visible()->limit(3)->get() as $page)
+                    @foreach ($item->pages()->orderby('created_at', 'desc')->visible()->limit(3)->get() as $page)
                         <div class="col-12 col-md-4 my-3">
                             <div class="block block-secondary h-100">
                                 <figure>
@@ -130,29 +135,12 @@
 
 
 
-    <article class="container-fluid px-5">
-        <h2 class="text-center mb-4">@lang('welcome.reqs')</h2>
-        <div class="container-xxl">
-            <div class="row justify-content-center">
-                @foreach ($reqs as $item)
-                    <div class="col-12 col-lg-6 my-3">
-                        <div class="block block-secondary">
-                            <h3 class="text-center">{{ $item->name }}</h3>
-                            @foreach ($item->groupRequisites as $req)
-                                <p>
-                                    <h5>{{ $req->label }}</h5>
-                                    <span class="copy">{{ $req->value }}</span>
-                                </p>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <a href="{{ route('requisites') }}" class="bttn bttn-secondary bttn-big mt-5 more">@lang('welcome.more')</a>
-        </div>
-    </article>
+    @include('partials.requisites', [
+        'reqs' => $reqs
+    ])
+    <div class="d-flex justify-content-center">
+        <a href="{{ route('requisites') }}" class="bttn bttn-secondary bttn-big mt-5 more">@lang('welcome.more')</a>
+    </div>
 
 @endsection
 

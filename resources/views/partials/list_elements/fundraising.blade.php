@@ -19,18 +19,18 @@
     @endif
     <div class="row justify-content-center mt-3">
         <div class="col d-flex flex-column @if ($item->itemsSum == 0) text-center @endif">
-            <span>Собрано</span>
+            <span>@lang('welcome.donate.collected')</span>
             <b>₴ @convert($item->already_collected)</b>
         </div>
         @if ($item->itemsSum > 0 && ($item->itemsSum - $item->already_collected) > 0)
             <div class="col text-end d-flex flex-column">
-                <span>Осталось собрать</span>
+                <span>@lang('welcome.donate.left')</span>
                 <b>₴ @convert($item->itemsSum - $item->already_collected)</b>
             </div>
         @endif
     </div>
     <div class="d-flex mt-3 justify-content-between">
-        <a href="{{ $item->donation_link }}" class="bttn bttn-primary" target="_blank">Ссылка на банк</a>
+        <a href="{{ $item->donation_link }}" class="bttn bttn-primary" target="_blank">@lang('welcome.donate.link')</a>
         <a href="{{ route('fundraising', [
             'fundraising' => $item->id
         ]) }}" class="bttn bttn-primary">@lang('welcome.detail')</a>

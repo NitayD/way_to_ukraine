@@ -9,7 +9,7 @@
                     @lang('welcome.main.subheader')
                 </h3>
                 <a href="{{ route('fundraisers') }}" class="first--bttn bttn bttn-secondary bttn-big mt-3">
-                    @lang('welcome.donate')
+                    @lang('welcome.donate.btn')
                 </a>
             </div>
         </div>

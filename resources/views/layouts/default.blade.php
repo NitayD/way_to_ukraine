@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ trans('panel.site_title') }}</title>
+    <title>@lang('welcome.meta.title')</title>
+    <meta name="title" content="@lang('welcome.meta.title')">
+    <meta name="description" content="@lang('welcome.meta.description')">
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> --}}
     <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -17,6 +19,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{config('app.url')}}">
+    <meta property="og:title" content="@lang('welcome.meta.title')">
+    <meta property="og:description" content="@lang('welcome.meta.description')">
+    <meta property="og:image" content="{{ asset('/images/main_bg4.jpg') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{config('app.url')}}">
+    <meta property="twitter:title" content="@lang('welcome.meta.title')">
+    <meta property="twitter:description" content="@lang('welcome.meta.description')">
+    <meta property="twitter:image" content="{{ asset('/images/main_bg4.jpg') }}">
 
     @stack('styles')
 </head>
@@ -60,7 +76,7 @@
                         </ul>
                     </div>
                     <a href="{{ route('fundraisers') }}" class="bttn bttn-secondary">
-                        <span>@lang('welcome.donate')</span>
+                        <span>@lang('welcome.donate.btn')</span>
                     </a>
                     {{-- <nav class="nav">
                         <a class="nav-link {{ app()->isLocale('ua') ? 'disabled' : 'text-white' }}" href="{{ url()->current() }}?change_language=ua">

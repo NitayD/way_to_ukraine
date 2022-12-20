@@ -76,7 +76,7 @@
                 infinite: true,
                 speed: 300,
                 slidesToShow: 1,
-                arrows: false,
+                arrows: true,
                 autoplay: false,
                 adaptiveHeight: true,
                 dots: true,

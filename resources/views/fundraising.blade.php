@@ -26,68 +26,18 @@
                     <div>
                         {!! $data->description !!}
                     </div>
-                    @if ($data->funraisingPurchasingLists()->count() > 0)
-                        <div class="my-5">
-                            <div class="slider--items" id="items">
-                                @foreach ($data->funraisingPurchasingLists()->with('item')->get() as $item)
-                                    <div class="block block-secondary">
-                                        @if ($item->item->photo->count())
-                                            <figure class="slider--mini">
-                                                @foreach ($item->item->photo as $photo)
-                                                    <img src="{{asset($photo->getUrl('preview'))}}" alt="">
-                                                @endforeach
-                                            </figure>
-                                        @endif
-                                        <b>{{$item->item->name}}</b>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="fundlist mt-5">
-                            <table>
-                                <thead class="text-white">
-                                    <tr class="text-center">
-                                        <th>Наименование</th>
-                                        <th>Количество</th>
-                                        <th>Общая сумма</th>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="3"></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data->funraisingPurchasingLists()->with('item')->get() as $item)
-                                        <tr>
-                                            <th>{{$item->item->name}}</th>
-                                            <td>
-                                                {{$item->amount}}
-                                            </td>
-                                            <th>
-                                                ₴ @convert($item->total_sum)
-                                            </th>
-                                        </tr>
-                                        <tr class="description text-white text-justify">
-                                            <td colspan="3">
-                                                {{ $item->item->description_short }}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @endif
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="px-3">
                         <div class="fundlist__content mb-4">
                             <div class="row justify-content-center">
                                 <div class="col d-flex flex-column @if ($data->itemsSum == 0) text-center @endif">
-                                    <span class="text-white">Собрано</span>
+                                    <span class="text-white">@lang('welcome.donate.collected')</span>
                                     ₴ @convert($data->already_collected)
                                 </div>
-                                @if ($data->itemsSum > 0)
+                                @if ($data->itemsSum > 0 && ($data->itemsSum - $data->already_collected) > 0)
                                     <div class="col text-end d-flex flex-column">
-                                        <span class="text-white">Осталось собрать</span>
+                                        <span class="text-white">@lang('welcome.donate.left')</span>
                                         <b>₴ @convert($data->itemsSum - $data->already_collected)</b>
                                     </div>
                                 @endif
@@ -100,15 +50,67 @@
                             @endif
                         </div>
                         <div class="my-4">
-                            <a href="{{ $data->donation_link }}" target="_blank" class="bttn bttn-secondary d-block text-center">Ссылка на оплату</a>
-                        </div>
-                        <div class="slider">
-                            @foreach ($data->gallary as $photo)
-                                <img src="{{ $photo->preview }}" alt="">
-                            @endforeach
+                            <a href="{{ $data->donation_link }}" target="_blank" class="bttn bttn-secondary d-block text-center">
+                                @lang('welcome.donate.link')
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+            @if ($data->funraisingPurchasingLists()->count() > 0)
+                <div class="my-5">
+                    <div class="slider--items" id="items">
+                        @foreach ($data->funraisingPurchasingLists()->with('item')->get() as $item)
+                            <div class="block block-secondary">
+                                @if ($item->item->photo->count())
+                                    <figure class="slider--mini">
+                                        @foreach ($item->item->photo as $photo)
+                                            <img src="{{asset($photo->getUrl('preview'))}}" alt="">
+                                        @endforeach
+                                    </figure>
+                                @endif
+                                <b>{{$item->item->name}}</b>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="fundlist mt-5">
+                    <table>
+                        <thead class="text-white">
+                            <tr class="text-center">
+                                <th>@lang('welcome.donate.table.name')</th>
+                                <th>@lang('welcome.donate.table.amount')</th>
+                                <th>@lang('welcome.donate.table.sum')</th>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($data->funraisingPurchasingLists()->with('item')->get() as $item)
+                                <tr>
+                                    <th>{{$item->item->name}}</th>
+                                    <td>
+                                        {{$item->amount}}
+                                    </td>
+                                    <th>
+                                        ₴ @convert($item->total_sum)
+                                    </th>
+                                </tr>
+                                <tr class="description text-white text-justify">
+                                    <td colspan="3">
+                                        {{ $item->item->description_short }}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+            <div class="slider mt-5 html-content">
+                @foreach ($data->gallary as $photo)
+                    <img src="{{ $photo->url }}" alt="">
+                @endforeach
             </div>
         </div>
     </article>
@@ -128,7 +130,7 @@
                 infinite: true,
                 speed: 300,
                 slidesToShow: 1,
-                arrows: false,
+                arrows: true,
                 autoplay: false,
                 adaptiveHeight: true,
                 dots: true,
