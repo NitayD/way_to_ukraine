@@ -13,28 +13,46 @@
 @php
     $team = collect([
         [
-            'name' => 'LoremN',
-            'last_name' => 'LoremSN',
-            'position' => 'Developer',
-            'image' => '/images/person.png'
+            'name' => 'Сергій',
+            'last_name' => 'Мельников',
+            'position' => 'Голова фонду',
+            'image' => '/images/team/serg.jpg'
         ],
         [
-            'name' => 'LoremN',
-            'last_name' => 'LoremSN',
-            'position' => 'Developer',
-            'image' => '/images/person.png'
+            'name' => 'Тимофій',
+            'last_name' => 'Постоюк',
+            'position' => 'Менеджер з розвитку фонду',
+            'image' => '/images/team/tymo.jpg'
         ],
         [
-            'name' => 'LoremN',
-            'last_name' => 'LoremSN',
-            'position' => 'Developer',
-            'image' => '/images/person.png'
+            'name' => 'Богдан',
+            'last_name' => 'Жук',
+            'position' => 'Головний маляр',
+            'image' => '/images/team/zhuk.jpg'
         ],
         [
-            'name' => 'LoremN',
-            'last_name' => 'LoremSN',
-            'position' => 'Developer',
-            'image' => '/images/person.png'
+            'name' => 'Максим',
+            'last_name' => 'Гладкіх',
+            'position' => 'Маляр та водій',
+            'image' => '/images/team/max.jpg'
+        ],
+        [
+            'name' => 'Володимир',
+            'last_name' => 'Тележинський',
+            'position' => 'Механік',
+            'image' => '/images/team/volodimir.jpg'
+        ],
+        [
+            'name' => 'Карина',
+            'last_name' => 'Шуба',
+            'position' => 'PR-менеджер',
+            'image' => '/images/team/karina.jpg'
+        ],
+        [
+            'name' => 'Нитай',
+            'last_name' => 'Джаксибаев',
+            'position' => 'Розробник вебсайту',
+            'image' => '/images/team/nitay.jpg'
         ],
     ]);
     $partn = collect([
@@ -42,7 +60,7 @@
             'name' => 'Анастасія',
             'last_name' => 'Савчишин',
             'position' => 'Краудфандінг коштів під потреби фонду',
-            'image' => '/images/team/1.jpg'
+            'image' => '/images/team/anastasiya.jpg'
         ],
     ]);
 @endphp
@@ -58,8 +76,10 @@
                             @if (!empty($item['image']))
                                 <figure><img src="{{asset($item['image'])}}" alt=""></figure>
                             @endif
-                            <h3 class="text-center mt-auto">{{ $item['last_name'] }} {{ $item['name'] }}</h3>
-                            <i>{{ $item['position'] }}</i>
+                            <h4 class="text-center mt-auto">
+                                <b>{{ $item['last_name'] }} {{ $item['name'] }}</b>
+                            </h4>
+                            <span>{{ $item['position'] }}</span>
                         </div>
                     </div>
                 @endforeach
