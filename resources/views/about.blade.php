@@ -29,6 +29,18 @@
     </p>
 </article>
 
+<article class="container-xxl mt-3">
+    <h2>Інтерв'ю UA:Перший у програмі телемарафону</h2>
+    <iframe
+        style="width: 100%; height: 700px;"
+        src="https://www.youtube.com/embed/hmbRxrP-dPQ?start=15852"
+        title="Ракетні удари по залізничній інфраструктурі та візит держсекретаря США Блінкена | 25 квітня"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</article>
+
 @include('partials.how_we_work')
 
 @endsection
