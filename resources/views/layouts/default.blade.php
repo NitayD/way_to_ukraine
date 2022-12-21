@@ -169,19 +169,19 @@
                             <li>
                                 <a href="mailto:melnykov_sergiy@ukr.net" target="_blank">
                                     <img src="{{ asset('/images/mail.png') }}" alt="">
-                                    Основна поштова скринька: melnykov_sergiy@ukr.net
+                                    Основна поштова скринька: <b>melnykov_sergiy@ukr.net</b>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://t.me/melnykov1508" target="_blank">
                                     <img src="{{ asset('/images/social/telegram.png') }}" alt="">
-                                    Передача Авто\робота фонду: @melnykov1508
+                                    Передача Авто\робота фонду: <b>@melnykov1508</b>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://t.me/CU4O2" target="_blank">
                                     <img src="{{ asset('/images/social/telegram.png') }}" alt="">
-                                    Партнерство\Спонсорство: @CU4O2
+                                    Партнерство\Спонсорство: <b>@CU4O2</b>
                                 </a>
                             </li>
                             {{-- <li>
