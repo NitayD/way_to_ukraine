@@ -167,9 +167,21 @@
                         <h5 class="title">@lang('welcome.footer.email')</h5>
                         <ul class="mail link-list">
                             <li>
-                                <a href="mailto:melnykov_sergiy@ukr.net">
+                                <a href="mailto:melnykov_sergiy@ukr.net" target="_blank">
                                     <img src="{{ asset('/images/mail.png') }}" alt="">
                                     Основна поштова скринька: melnykov_sergiy@ukr.net
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://t.me/melnykov1508" target="_blank">
+                                    <img src="{{ asset('/images/social/telegram.png') }}" alt="">
+                                    Передача Авто\робота фонду: @melnykov1508
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://t.me/CU4O2" target="_blank">
+                                    <img src="{{ asset('/images/social/telegram.png') }}" alt="">
+                                    Партнерство\Спонсорство: @CU4O2
                                 </a>
                             </li>
                             {{-- <li>
