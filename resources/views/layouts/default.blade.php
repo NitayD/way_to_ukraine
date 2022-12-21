@@ -175,7 +175,7 @@
                             <li>
                                 <a href="https://t.me/melnykov1508" target="_blank">
                                     <img src="{{ asset('/images/social/telegram.png') }}" alt="">
-                                    Передача Авто\робота фонду: <b>@melnykov1508</b>
+                                    Передача авто\Робота фонду: <b>@melnykov1508</b>
                                 </a>
                             </li>
                             <li>
