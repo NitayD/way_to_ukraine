@@ -76,7 +76,9 @@
                             @if (!empty($item['image']))
                                 <figure><img src="{{asset($item['image'])}}" alt=""></figure>
                             @endif
-                            <h3 class="text-center mt-auto">{{ $item['last_name'] }} {{ $item['name'] }}</h3>
+                            <h4 class="text-center mt-auto">
+                                <b>{{ $item['last_name'] }} {{ $item['name'] }}</b>
+                            </h4>
                             <span>{{ $item['position'] }}</span>
                         </div>
                     </div>
