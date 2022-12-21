@@ -136,7 +136,8 @@
 
 
     @include('partials.requisites', [
-        'reqs' => $reqs
+        'reqs' => $reqs,
+        'nogroup' => $nogroup
     ])
     <div class="d-flex justify-content-center">
         <a href="{{ route('requisites') }}" class="bttn bttn-secondary bttn-big mt-5 more">@lang('welcome.more')</a>

@@ -21,6 +21,7 @@ class PageController extends Controller
             'funds' => $funds,
             'blocks' => $blocks,
             'reqs' => $reqs,
+            'nogroup' => Requisite::nogroup()->get(),
         ]);
     }
 
