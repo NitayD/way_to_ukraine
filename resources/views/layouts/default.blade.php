@@ -148,13 +148,13 @@
                     <div class="col-12 col-md-6">
                         <h5 class="title">@lang('welcome.footer.social')</h5>
                         <div class="social">
-                            <a href="" class="social-link">
+                            <a href="https://www.facebook.com/groups/way.to.ukraine" class="social-link" target="_blank">
                                 <img class="img-fluid" src="{{ asset('/images/social/facebook.png') }}" alt="">
                             </a>
-                            <a href="" class="social-link">
+                            <a href="https://www.instagram.com/way.to.ukraine/" class="social-link" target="_blank">
                                 <img class="img-fluid" src="{{ asset('/images/social/instagram.png') }}" alt="">
                             </a>
-                            <a href="" class="social-link">
+                            {{-- <a href="" class="social-link">
                                 <img class="img-fluid" src="{{ asset('/images/social/linkedin.png') }}" alt="">
                             </a>
                             <a href="" class="social-link">
@@ -162,22 +162,22 @@
                             </a>
                             <a href="" class="social-link">
                                 <img class="img-fluid" src="{{ asset('/images/social/youtube.png') }}" alt="">
-                            </a>
+                            </a> --}}
                         </div>
                         <h5 class="title">@lang('welcome.footer.email')</h5>
                         <ul class="mail link-list">
                             <li>
-                                <a href="mailto:test@test.test">
+                                <a href="mailto:melnykov_sergiy@ukr.net">
                                     <img src="{{ asset('/images/mail.png') }}" alt="">
-                                    Основная почта: test@test.test
+                                    Основная почта: melnykov_sergiy@ukr.net
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="mailto:test@test.test">
                                     <img src="{{ asset('/images/mail.png') }}" alt="">
                                     Запасная почта: test@test.test
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

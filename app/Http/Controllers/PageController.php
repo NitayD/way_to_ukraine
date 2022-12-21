@@ -62,7 +62,7 @@ class PageController extends Controller
     public function fundraisers()
     {
         return view('list', [
-            'title' => 'Актуальные сборы',
+            'title' => trans('welcome.donation.title'),
             'itemType' => 'fundraising',
             'list' => Fundraising::main()->get()
         ]);

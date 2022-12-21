@@ -5,7 +5,7 @@
             'link' => route('main'),
         ],
         [
-            'text' => 'Список сборов',
+            'text' => trans('welcome.donation.title'),
             'link' => route('fundraisers'),
         ],
         [
