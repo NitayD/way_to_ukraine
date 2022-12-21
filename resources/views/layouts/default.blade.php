@@ -169,7 +169,7 @@
                             <li>
                                 <a href="mailto:melnykov_sergiy@ukr.net">
                                     <img src="{{ asset('/images/mail.png') }}" alt="">
-                                    Основная почта: melnykov_sergiy@ukr.net
+                                    Основна поштова скринька: melnykov_sergiy@ukr.net
                                 </a>
                             </li>
                             {{-- <li>
