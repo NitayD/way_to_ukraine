@@ -167,21 +167,30 @@
                         <h5 class="title">@lang('welcome.footer.email')</h5>
                         <ul class="mail link-list">
                             <li>
-                                <a href="mailto:melnykov_sergiy@ukr.net" target="_blank">
-                                    <img src="{{ asset('/images/mail.png') }}" alt="">
-                                    Основна поштова скринька: <b class="ms-2">melnykov_sergiy@ukr.net</b>
+                                <a class="flex-wrap" href="mailto:melnykov_sergiy@ukr.net" target="_blank">
+                                    <div>
+                                        <img src="{{ asset('/images/mail.png') }}" alt="">
+                                        Основна поштова скринька:
+                                    </div>
+                                    <b class="ms-2">melnykov_sergiy@ukr.net</b>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://t.me/melnykov1508" target="_blank">
-                                    <img src="{{ asset('/images/social/telegram.png') }}" alt="">
-                                    Передача авто\Робота фонду: <b class="ms-2">@melnykov1508</b>
+                                <a class="flex-wrap" href="https://t.me/melnykov1508" target="_blank">
+                                    <div>
+                                        <img src="{{ asset('/images/social/telegram.png') }}" alt="">
+                                        Передача авто\Робота фонду:
+                                    </div>
+                                    <b class="ms-2">Сергій@melnykov1508</b>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://t.me/CU4O2" target="_blank">
-                                    <img src="{{ asset('/images/social/telegram.png') }}" alt="">
-                                    Партнерство\Спонсорство: <b class="ms-2">@CU4O2</b>
+                                <a class="flex-wrap" href="https://t.me/CU4O2" target="_blank">
+                                    <div>
+                                        <img src="{{ asset('/images/social/telegram.png') }}" alt="">
+                                        Партнерство\Спонсорство:
+                                    </div>
+                                    <b class="ms-2">Тимофій@CU4O2</b>
                                 </a>
                             </li>
                             {{-- <li>
