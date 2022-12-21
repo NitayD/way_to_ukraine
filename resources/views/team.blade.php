@@ -37,6 +37,14 @@
             'image' => '/images/person.png'
         ],
     ]);
+    $partn = collect([
+        [
+            'name' => 'Анастасія',
+            'last_name' => 'Савчишин',
+            'position' => 'Краудфандінг коштів під потреби фонду',
+            'image' => '/images/team/1.jpg'
+        ],
+    ]);
 @endphp
 
 @section('content')
@@ -62,7 +70,7 @@
         <h2 class="text-center mb-4">@lang('welcome.partners')</h2>
         <div class="container-xxl">
             <div class="row justify-content-center">
-                @foreach ($team as $item)
+                @foreach ($partn as $item)
                     <div class="col-6 col-md-4 my-3">
                         <div class="block block-secondary">
                             @if (!empty($item['image']))
