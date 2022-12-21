@@ -181,7 +181,7 @@
                                         <img src="{{ asset('/images/social/telegram.png') }}" alt="">
                                         Передача авто\Робота фонду:
                                     </div>
-                                    <b class="ms-2">Сергій@melnykov1508</b>
+                                    <b class="ms-2">Сергій @melnykov1508</b>
                                 </a>
                             </li>
                             <li>
@@ -190,7 +190,7 @@
                                         <img src="{{ asset('/images/social/telegram.png') }}" alt="">
                                         Партнерство\Спонсорство:
                                     </div>
-                                    <b class="ms-2">Тимофій@CU4O2</b>
+                                    <b class="ms-2">Тимофій @CU4O2</b>
                                 </a>
                             </li>
                             {{-- <li>
