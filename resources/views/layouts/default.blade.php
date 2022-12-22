@@ -222,6 +222,10 @@
             $('.copy').on('click', function (e) {
                 copyToClipboard(e.target)
             })
+            $('.navbar-toggler').on('click', function (e) {
+                e.preventDefault()
+                $('.navbar').toggleClass('open').find('.collapse').toggleClass('show')
+            })
         })
     </script>
 </body>

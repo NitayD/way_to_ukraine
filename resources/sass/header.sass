@@ -10,6 +10,17 @@
         margin-right: 15px
         img
             transform: scale(0.6)
+    .navbar
+        @media screen and (max-width: 991px)
+            background-color: $primary
+            text-align: center
+            .navbar-collapse
+                padding: 15px 0
+            .navbar-nav
+                padding: 15px
+            &.open
+                .bttn
+                    display: none
 body
     padding-top: 86px
     // box-shadow: 0 0 5px 5px rgba($primary, 0.4)

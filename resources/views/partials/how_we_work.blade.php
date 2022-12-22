@@ -2,7 +2,7 @@
     <div class="container-xxl">
         <h2>@lang('welcome.how_we_work')</h2>
         <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mt-3">
                 <div class="block block-secondary">
                     <h3>Ви звертаєтесь до нас щодо отримання автівки від нашого фонду</h3>
                     <p>
@@ -17,7 +17,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mt-3">
                 <div class="block block-secondary">
                     <h3>Ви звертаєтесь до нас з уже зібранними коштами</h3>
                     <p>

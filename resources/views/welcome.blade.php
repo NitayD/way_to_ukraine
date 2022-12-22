@@ -37,7 +37,7 @@
 
     @include('partials.how_we_work')
 
-    <article class="container-fluid p-5 second">
+    <article class="container-fluid second">
         <h2 class="text-center mb-4">@lang('welcome.donation.title')</h2>
         <div class="container-xxl">
             <div class="row justify-content-center">
@@ -69,18 +69,20 @@
                                     @lang('welcome.donate.collected'): <span>₴ @convert($item->already_collected)</span>
                                 </div>
                             @endif
-                            <div class="d-flex justify-content-between mt-3">
-                                <div class="me-2">
-                                    <a href="{{ $item->donation_link }}" class="bttn bttn-white" target="_blank">
-                                        @lang('welcome.donate.link')
-                                    </a>
-                                </div>
-                                <div class="ms-2">
-                                    <a href="{{ route('fundraising', [
-                                        'fundraising' => $item->id
-                                    ]) }}" class="bttn">
-                                        @lang('welcome.detail')
-                                    </a>
+                            <div class="w-100">
+                                <div class="row">
+                                    <div class="col mt-3">
+                                        <a href="{{ $item->donation_link }}" class="bttn bttn-white" target="_blank">
+                                            @lang('welcome.donate.link')
+                                        </a>
+                                    </div>
+                                    <div class="col-auto mt-3">
+                                        <a href="{{ route('fundraising', [
+                                            'fundraising' => $item->id
+                                        ]) }}" class="bttn">
+                                            @lang('welcome.detail')
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +96,7 @@
     </article>
 
     @foreach ($blocks as $item)
-        <article class="container-fluid px-5">
+        <article class="container-fluid">
             <h2 class="text-center mb-4">
                 {{$item->name}}
             </h2>

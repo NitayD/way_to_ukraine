@@ -66,12 +66,12 @@
 @endphp
 
 @section('content')
-    <article class="container-fluid px-5 second mt-3">
+    <article class="container-fluid second mt-3">
         <h2 class="text-center mb-4">@lang('welcome.team')</h2>
         <div class="container-xxl">
             <div class="row justify-content-center">
                 @foreach ($team as $item)
-                    <div class="col-6 col-md-4 my-3">
+                    <div class="col-12 col-md-4 my-3">
                         <div class="block block-secondary">
                             @if (!empty($item['image']))
                                 <figure><img src="{{asset($item['image'])}}" alt=""></figure>
@@ -86,12 +86,12 @@
             </div>
         </div>
     </article>
-    <article class="container-fluid px-5 second mt-3">
+    <article class="container-fluid second mt-3">
         <h2 class="text-center mb-4">@lang('welcome.partners')</h2>
         <div class="container-xxl">
             <div class="row justify-content-center">
                 @foreach ($partn as $item)
-                    <div class="col-6 col-md-4 my-3">
+                    <div class="col-12 col-md-4 my-3">
                         <div class="block block-secondary">
                             @if (!empty($item['image']))
                                 <figure><img src="{{asset($item['image'])}}" alt=""></figure>

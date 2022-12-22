@@ -1,4 +1,4 @@
-<article class="container-fluid px-5 second">
+<article class="container-fluid second">
     <h2 class="text-center mb-4">@lang('welcome.reqs')</h2>
     @isset($founders)
         <div class="container-xxl d-flex justify-content-center">
