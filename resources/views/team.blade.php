@@ -28,7 +28,7 @@
             'name' => 'Карина',
             'last_name' => 'Шуба',
             'position' => 'PR-менеджер',
-            'image' => '/images/team/karina.png'
+            'image' => '/images/team/karina.jpg'
         ],
         [
             'name' => 'Богдан',
