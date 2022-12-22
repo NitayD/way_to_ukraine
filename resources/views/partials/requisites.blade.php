@@ -8,7 +8,7 @@
                     <tbody>
                         @foreach ($founders as $item)
                             <tr>
-                                <th class="p-3">{{$item->title}}</th>
+                                <th title="{{$item->title}}" class="p-3">{{$item->title}}</th>
                                 <td class="px-3">{{ $item->progress }}%</td>
                                 <td class="text-end">
                                     <a href="{{$item->donation_link}}" class="bttn bttn-primary">
@@ -33,8 +33,8 @@
                                 <tbody>
                                     @foreach ($item->groupRequisites as $req)
                                         <tr>
-                                            <th>{{ $req->label }}</th>
-                                            <td class="text-end copy">{{ $req->value }}</td>
+                                            <th title="{{ $req->label }}">{{ $req->label }}</th>
+                                            <td class="text-end copy" title="{{ $req->value }}">{{ $req->value }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
