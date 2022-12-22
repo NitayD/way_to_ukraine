@@ -66,6 +66,12 @@ footer.footer
             filter: invert(1)
         &:hover
             background-color: lighten($primary, 20%)
+        &--invert
+            background-color: $secondary
+            &:hover
+                background-color: darken($secondary, 10%)
+            img
+                filter: none
 
 
 .link-list

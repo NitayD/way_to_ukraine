@@ -60,7 +60,10 @@
             'name' => 'Анастасія',
             'last_name' => 'Савчишин',
             'position' => 'Краудфандінг коштів під потреби фонду',
-            'image' => '/images/team/anastasiya.jpg'
+            'image' => '/images/team/anastasiya.jpg',
+            'social' => [
+                'twitter' => 'https://twitter.com/asvchy'
+            ]
         ],
     ]);
 @endphp
@@ -100,6 +103,15 @@
                                 <b>{{ $item['last_name'] }} {{ $item['name'] }}</b>
                             </h4>
                             <span>{{ $item['position'] }}</span>
+                            <div class="social">
+                                @if (!empty($item['social']))
+                                    @foreach ($item['social'] as $social => $link)
+                                        <a href="{{$link}}" class="social-link social-link--invert" target="_blank">
+                                            <img class="img-fluid" src="{{ asset('/images/social/'.$social.'.png') }}" alt="">
+                                        </a>
+                                    @endforeach
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
