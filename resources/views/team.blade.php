@@ -49,8 +49,8 @@
             'image' => '/images/team/volodimir.jpg'
         ],
         [
-            'name' => 'Нитай',
-            'last_name' => 'Джаксибаев',
+            'name' => 'Нітай',
+            'last_name' => 'Джаксібаєв',
             'position' => 'Розробник вебсайту',
             'image' => '/images/team/nitay.jpg'
         ],
