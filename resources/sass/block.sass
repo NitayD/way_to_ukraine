@@ -44,20 +44,21 @@
             height: 200px
             object-fit: cover
     &-table
-        table
-            width: 100%
-            tr
-                display: flex
-                flex-direction: column
-                padding-bottom: 30px
-                td, th
-                    text-align: center !important
-                    padding-bottom: 10px
-                td
-                    max-width: calc(100vw - 80px)
-                    overflow: hidden
-                    white-space: nowrap
-                    text-overflow: ellipsis
+        @media screen and (max-width: 575px)
+            table
+                width: 100%
+                tr
+                    display: flex
+                    flex-direction: column
+                    padding-bottom: 30px
+                    td, th
+                        text-align: center !important
+                        padding-bottom: 10px
+                    td
+                        max-width: calc(100vw - 80px)
+                        overflow: hidden
+                        white-space: nowrap
+                        text-overflow: ellipsis
 a.block:hover
     color: lighten(black, 10%)
 
