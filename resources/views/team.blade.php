@@ -25,6 +25,12 @@
             'image' => '/images/team/tymo.jpg'
         ],
         [
+            'name' => 'Карина',
+            'last_name' => 'Шуба',
+            'position' => 'PR-менеджер',
+            'image' => '/images/team/karina.png'
+        ],
+        [
             'name' => 'Богдан',
             'last_name' => 'Жук',
             'position' => 'Головний маляр',
@@ -41,12 +47,6 @@
             'last_name' => 'Тележинський',
             'position' => 'Механік',
             'image' => '/images/team/volodimir.jpg'
-        ],
-        [
-            'name' => 'Карина',
-            'last_name' => 'Шуба',
-            'position' => 'PR-менеджер',
-            'image' => '/images/team/karina.jpg'
         ],
         [
             'name' => 'Нитай',
