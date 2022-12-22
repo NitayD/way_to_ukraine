@@ -47,7 +47,7 @@
                 @if ($nogroup->count() > 0)
                     <div class="col-12 col-md-6">
                         <div class="block block-secondary my-3 block-table">
-                            <h4><b>-</b></h4>
+                            <h4><b>@lang('welcome.donate.other')</b></h4>
                             <table>
                                 <tbody>
                                     @foreach ($nogroup as $req)
