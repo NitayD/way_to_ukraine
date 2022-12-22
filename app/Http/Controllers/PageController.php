@@ -29,7 +29,7 @@ class PageController extends Controller
     {
         return view('list', [
             'title' => $category->name,
-            'list' => $category->pages()->where('visible', true)->get(),
+            'list' => $category->pages()->where('visible', true)->orderby('created_at', 'desc')->get(),
             'itemType' => 'page',
         ]);
     }
@@ -65,7 +65,7 @@ class PageController extends Controller
         return view('list', [
             'title' => trans('welcome.donation.title'),
             'itemType' => 'fundraising',
-            'list' => Fundraising::main()->get()
+            'list' => Fundraising::main()->orderby('created_at', 'desc')->get()
         ]);
     }
 
