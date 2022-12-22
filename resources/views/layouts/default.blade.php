@@ -64,7 +64,7 @@
                             </li>
 
                             @php
-                                $categories = \App\Models\ContentCategory::all();
+                                $categories = \App\Models\ContentCategory::where('show_menu', true)->get();
                             @endphp
                             @foreach ($categories as $item)
                                 <li class="nav-item">

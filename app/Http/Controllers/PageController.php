@@ -15,7 +15,7 @@ class PageController extends Controller
     public function main()
     {
         $funds = Fundraising::main()->get();
-        $blocks = ContentCategory::all();
+        $blocks = ContentCategory::where('show_main_page', true)->get();
         $reqs = RequisiteGroup::wReqs()->get();
         return view('welcome', [
             'funds' => $funds,
