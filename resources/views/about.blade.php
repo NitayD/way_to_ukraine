@@ -39,7 +39,7 @@
 
 <article class="container-xxl mt-3">
     <h2>Інтерв'ю UA:Перший у програмі телемарафону</h2>
-    <iframe style="width: 100%;" height="500" src="https://www.youtube.com/embed/hmbRxrP-dPQ?start=15853" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe style="width: 100%;" height="500" src="https://www.youtube.com/embed/hmbRxrP-dPQ?start=15853"></iframe>
 </article>
 
 @include('partials.how_we_work')
