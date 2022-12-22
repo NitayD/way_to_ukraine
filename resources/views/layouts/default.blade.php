@@ -226,6 +226,12 @@
                 e.preventDefault()
                 $('.navbar').toggleClass('open').find('.collapse').toggleClass('show')
             })
+            $('.html-content figure.media oembed').each(function () {
+                var orig = $(this)
+                var neww = $('<iframe></iframe>')
+                neww.attr('src', orig.attr('url'))
+                orig.replaceWith(neww)
+            })
         })
     </script>
 </body>
