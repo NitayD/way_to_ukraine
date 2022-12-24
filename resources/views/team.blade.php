@@ -75,11 +75,11 @@
             <div class="row justify-content-center">
                 @foreach ($team as $item)
                     <div class="col-12 col-md-4 my-3">
-                        <div class="block block-secondary">
+                        <div class="block block-secondary text-center">
                             @if (!empty($item['image']))
                                 <figure><img src="{{asset($item['image'])}}" alt=""></figure>
                             @endif
-                            <h4 class="text-center mt-auto">
+                            <h4 class="mt-auto">
                                 <b>{{ $item['last_name'] }} {{ $item['name'] }}</b>
                             </h4>
                             <span>{{ $item['position'] }}</span>
@@ -95,11 +95,11 @@
             <div class="row justify-content-center">
                 @foreach ($partn as $item)
                     <div class="col-12 col-md-4 my-3">
-                        <div class="block block-secondary">
+                        <div class="block block-secondary text-center">
                             @if (!empty($item['image']))
                                 <figure><img src="{{asset($item['image'])}}" alt=""></figure>
                             @endif
-                            <h4 class="text-center mt-auto">
+                            <h4 class="mt-auto">
                                 <b>{{ $item['last_name'] }} {{ $item['name'] }}</b>
                             </h4>
                             <span>{{ $item['position'] }}</span>
