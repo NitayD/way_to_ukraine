@@ -16,13 +16,19 @@
             'name' => 'Сергій',
             'last_name' => 'Мельников',
             'position' => 'Голова фонду',
-            'image' => '/images/team/serg.jpg'
+            'image' => '/images/team/serg.jpg',
+            'social' => [
+                'telegram' => 'https://t.me/melnykov1508'
+            ]
         ],
         [
             'name' => 'Тимофій',
             'last_name' => 'Постоюк',
             'position' => 'Менеджер з розвитку фонду',
-            'image' => '/images/team/tymo.jpg'
+            'image' => '/images/team/tymo.jpg',
+            'social' => [
+                'telegram' => 'https://t.me/CU4O2'
+            ]
         ],
         [
             'name' => 'Карина',
@@ -52,7 +58,10 @@
             'name' => 'Нітай',
             'last_name' => 'Джаксібаєв',
             'position' => 'Розробник вебсайту',
-            'image' => '/images/team/nitay.jpg'
+            'image' => '/images/team/nitay.jpg',
+            'social' => [
+                'telegram' => 'https://t.me/id294735285'
+            ]
         ],
     ]);
     $partn = collect([
@@ -83,6 +92,15 @@
                                 <b>{{ $item['last_name'] }} {{ $item['name'] }}</b>
                             </h4>
                             <span>{{ $item['position'] }}</span>
+                            <div class="social mt-2">
+                                @if (!empty($item['social']))
+                                    @foreach ($item['social'] as $social => $link)
+                                        <a href="{{$link}}" class="social-link social-link--invert" target="_blank">
+                                            <img class="img-fluid" src="{{ asset('/images/social/'.$social.'.png') }}" alt="">
+                                        </a>
+                                    @endforeach
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -103,7 +121,7 @@
                                 <b>{{ $item['last_name'] }} {{ $item['name'] }}</b>
                             </h4>
                             <span>{{ $item['position'] }}</span>
-                            <div class="social">
+                            <div class="social mt-2">
                                 @if (!empty($item['social']))
                                     @foreach ($item['social'] as $social => $link)
                                         <a href="{{$link}}" class="social-link social-link--invert" target="_blank">
