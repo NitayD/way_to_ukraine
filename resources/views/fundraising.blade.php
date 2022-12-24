@@ -149,6 +149,14 @@
                 arrows: true,
                 autoplay: false,
                 dots: false,
+                responsive: [
+                    {
+                        breakpoint: 767,
+                        settings: {
+                            slidesToShow: 1,
+                        }
+                    }
+                ]
             })
             $('.slider--mini').slick({
                 lazyLoad: 'ondemand',

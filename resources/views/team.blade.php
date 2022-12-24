@@ -33,19 +33,19 @@
         [
             'name' => 'Богдан',
             'last_name' => 'Жук',
-            'position' => 'Головний маляр',
+            'position' => 'Головний спеціаліст з обслуговування авто',
             'image' => '/images/team/zhuk.jpg'
         ],
         [
             'name' => 'Максим',
             'last_name' => 'Гладкіх',
-            'position' => 'Маляр та водій',
+            'position' => 'Спеціаліст з обслуговування авто\Водій',
             'image' => '/images/team/max.jpg'
         ],
         [
             'name' => 'Володимир',
             'last_name' => 'Тележинський',
-            'position' => 'Механік',
+            'position' => 'Спеціаліст з обслуговування авто',
             'image' => '/images/team/volodimir.jpg'
         ],
         [
