@@ -51,8 +51,14 @@
         [
             'name' => 'Володимир',
             'last_name' => 'Тележинський',
-            'position' => 'Спеціаліст з обслуговування авто',
+            'position' => 'Механік',
             'image' => '/images/team/volodimir.jpg'
+        ],
+        [
+            'name' => 'Глєб',
+            'last_name' => 'Дерікот',
+            'position' => 'Головний механік',
+            'image' => '/images/team/gleb.jpg'
         ],
         [
             'name' => 'Нітай',
