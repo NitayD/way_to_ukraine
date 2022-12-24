@@ -39,7 +39,7 @@
 
 <article class="container-xxl mt-3">
     <h2>Інтерв'ю UA:Перший у програмі телемарафону</h2>
-    <iframe style="width: 100%; max-height: 70vh;" height="700" src="https://www.youtube.com/embed/gPkKNKsgcN0"></iframe>
+    <iframe style="width: 100%; max-height: 60vh;" height="700" src="https://www.youtube.com/embed/gPkKNKsgcN0"></iframe>
     <p>
         <a href="https://www.youtube.com/watch?v=hmbRxrP-dPQ&t=15853" target="_blank" rel="noopener noreferrer" class="bttn bttn-secondary mt-4">
             Оригінальне відео
