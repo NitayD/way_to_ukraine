@@ -51,13 +51,13 @@
         [
             'name' => 'Володимир',
             'last_name' => 'Тележинський',
-            'position' => 'Механік',
+            'position' => 'Головний механік',
             'image' => '/images/team/volodimir.jpg'
         ],
         [
             'name' => 'Глєб',
             'last_name' => 'Дерікот',
-            'position' => 'Головний механік',
+            'position' => 'Спеціаліст з обслуговування авто\Водій',
             'image' => '/images/team/gleb.jpg'
         ],
         [
